@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { UserRoundCheck } from "lucide-react";
 import userLogout from "../../utils/logout";
-
+import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
@@ -80,11 +80,7 @@ export default function NavBar({ user, setUser }) {
       </nav>
       <div className="logoContainer">
         <Link to="/">
-          <img
-            className="logo"
-            src="src/assets/images/origins-digital.svg"
-            alt="logo"
-          />
+          <img className="logo" src={logo} alt="logo" />
         </Link>
       </div>
     </>

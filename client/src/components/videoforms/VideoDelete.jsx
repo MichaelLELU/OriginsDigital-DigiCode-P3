@@ -67,7 +67,9 @@ export default function VideoDelete() {
                   {`${video.title.charAt(0).toUpperCase()}${video.title.slice(1)}`}
                 </option>
               ))}
-              {errors.id && <p>{errors.id.message}</p>}
+              {errors.id && (
+                <p className="form-error-login">{errors.id.message}</p>
+              )}
             </select>
           </div>
 

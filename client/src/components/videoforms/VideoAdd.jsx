@@ -72,7 +72,9 @@ export default function VideoAdd() {
                 },
               })}
             />
-            {errors.title && <p> {errors.title.message}</p>}
+            {errors.title && (
+              <p className="form-error-login"> {errors.title.message}</p>
+            )}
           </div>
           <div className="input-form-video" id="description-video">
             <label htmlFor="description"> Description </label>
@@ -87,7 +89,9 @@ export default function VideoAdd() {
                 },
               })}
             />
-            {errors.description && <p> {errors.description.message}</p>}
+            {errors.description && (
+              <p className="form-error-login"> {errors.description.message}</p>
+            )}
           </div>
 
           <div className="input-form-video">
@@ -133,7 +137,9 @@ export default function VideoAdd() {
                 required: requiredFieldError,
               })}
             />
-            {errors.image && <p> {errors.image.message}</p>}
+            {errors.image && (
+              <p className="form-error-login"> {errors.image.message}</p>
+            )}
           </div>
 
           <div className="input-form-video">
@@ -145,7 +151,9 @@ export default function VideoAdd() {
                 required: requiredFieldError,
               })}
             />
-            {errors.url && <p> {errors.url.message}</p>}
+            {errors.url && (
+              <p className="form-error-login"> {errors.url.message}</p>
+            )}
           </div>
 
           <button type="submit" className="button-form-panel">
