@@ -1,13 +1,13 @@
-# harmonia_p3
+# Origins Digital
 
-This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+> This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.  
+> It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
 
 ## Setup & Use
 
 **Windows users:** be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
 
-```
+```sh
 git config --global core.eol lf
 git config --global core.autocrlf false
 ```
@@ -35,12 +35,12 @@ git config --global core.autocrlf false
 - _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
 - _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
 - _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
+- _Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
 
 ## Deployment with Traefik
 
 > ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
+> [Traefik VPS starter kit](https://github.com/WildCodeSchool/vps-traefik-starter-kit/)
 
 For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
 
@@ -59,7 +59,7 @@ Use this same tab to add the other environment variables required for the projec
 Only the server will be accessible. The root path `"/"` will redirect to the dist folder of your client. In order to allow that, please uncomment the line as explained in `server/src/app.js` (Line 102).
 Because the server will also serve the client, the global variable VITE_SERVER_URL will be set with an empty string.
 
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
+Your url will be `https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
 
 ### About the database
 
