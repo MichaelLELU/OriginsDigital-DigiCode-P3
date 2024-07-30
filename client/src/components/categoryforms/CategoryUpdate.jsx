@@ -69,7 +69,9 @@ export default function CategoryUpdate() {
                   value={cat.id}
                 >{`${cat.name.charAt(0).toUpperCase()}${cat.name.slice(1)}`}</option>
               ))}
-              {errors.id && <p>{errors.id.message}</p>}
+              {errors.id && (
+                <p className="form-error-login">{errors.id.message}</p>
+              )}
             </select>
           </div>
           <div className="input-form-video">
@@ -86,7 +88,9 @@ export default function CategoryUpdate() {
                 },
               })}
             />
-            {errors.name && <p>{errors.name.message}</p>}
+            {errors.name && (
+              <p className="form-error-login">{errors.name.message}</p>
+            )}
           </div>
           <button type="submit" className="button-form-panel">
             {" "}

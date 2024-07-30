@@ -1,4 +1,5 @@
 import { Navigate, useOutletContext } from "react-router-dom";
+import { useEffect } from "react";
 
 import VideoAdd from "../../components/videoforms/VideoAdd";
 import VideoDelete from "../../components/videoforms/VideoDelete";
@@ -12,7 +13,16 @@ import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
 export default function AdminPage() {
   const { currentUser } = useOutletContext();
 
-  return currentUser?.role === "admin" ? (
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentUser.role !== "admin") {
+        <Navigate to="/" />;
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [currentUser]);
+
+  return (
     <>
       <h1 className="title-admin-page"> Admin pannel</h1>
       <div className="admin-panel">
@@ -34,7 +44,5 @@ export default function AdminPage() {
         </section>
       </div>
     </>
-  ) : (
-    <Navigate to="/" />
   );
 }
