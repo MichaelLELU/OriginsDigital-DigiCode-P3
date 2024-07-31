@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   Navigate,
-  redirect,
   RouterProvider,
 } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -36,11 +35,13 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <CategoriesPage />,
         loader: () => fetch(`${express}/api/categories`),
-      },
-      {
-        path: "/categories/:name",
-        element: <CategoryPage />,
-        loader: () => fetch(`${express}/api/categories`),
+        children: [
+          {
+            path: "/categories/:name",
+            element: <CategoryPage />,
+            loader: () => fetch(`${express}/api/categories`),
+          },
+        ],
       },
       {
         path: "/video/:id",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
             return response.data;
           } catch (error) {
             toast.error("An error occured, please try again later");
-            return redirect("/");
+            return window.history.back();
           }
         },
       },
