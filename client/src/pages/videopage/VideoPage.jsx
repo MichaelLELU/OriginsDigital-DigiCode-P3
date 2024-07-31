@@ -68,9 +68,9 @@ export default function VideoPage() {
             </div>
           </div>
           <h3 className="related-videos">
-            More videos in {videoData.category} category
+            More videos in {videoData.category}
           </h3>
-          <CategoriesList category={videoData.category} />
+          <CategoriesList category={{ name: videoData.category }} />
         </>
       )}
     </>

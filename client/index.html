@@ -9,6 +9,17 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // https://github.com/facebook/react/issues/24283#issuecomment-1552160985
+      try {
+        console.info = new Proxy(console.info, {
+          apply: (target, thisArg, args) => {
+            if (args?.[0]?.includes?.("React DevTools")) return;
+            return Reflect.apply(target, thisArg, args);
+          },
+        });
+      } catch {}
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

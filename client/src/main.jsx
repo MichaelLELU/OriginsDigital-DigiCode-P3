@@ -3,8 +3,11 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   Navigate,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 import App from "./App";
 import HomePage from "./pages/homepage/HomePage";
@@ -42,7 +45,17 @@ const router = createBrowserRouter([
       {
         path: "/video/:id",
         element: <VideoPage />,
-        loader: ({ params }) => fetch(`${express}/api/videos/${params.id}`),
+        loader: async ({ params }) => {
+          try {
+            const response = await axios.get(
+              `${express}/api/videos/${params.id}`
+            );
+            return response.data;
+          } catch (error) {
+            toast.error("An error occured, please try again later");
+            return redirect("/");
+          }
+        },
       },
       {
         path: "/signup",
@@ -71,7 +84,7 @@ const router = createBrowserRouter([
       {
         path: "/*",
         element: <Navigate to="/" />,
-      }
+      },
     ],
   },
 ]);

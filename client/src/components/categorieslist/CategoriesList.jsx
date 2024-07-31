@@ -6,23 +6,24 @@ import "swiper/css";
 import "swiper/css/navigation";
 import PropTypes from "prop-types";
 import VideoCard from "../videocard/VideoCard";
-import "./CategoriesList.css"
+import "./CategoriesList.css";
 
 export default function CategoriesList({ category }) {
   const { name } = category;
   const [result, setResult] = useState();
 
-useEffect(() => {
+  useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
     const fetchCategoryVideo = async () => {
-      const response = await fetch(`${express}/api/categories/${name || category}`);
+      const response = await fetch(
+        `${express}/api/categories/${name || category}`
+      );
       const data = await response.json();
       setResult(data);
     };
+
     fetchCategoryVideo();
-
-}, [category, name])  
-
+  }, [category, name]);
 
   return (
     <Swiper
@@ -56,9 +57,7 @@ useEffect(() => {
 }
 
 CategoriesList.propTypes = {
-  category: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
