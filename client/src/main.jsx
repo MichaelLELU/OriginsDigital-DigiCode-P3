@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
+  Navigate,
   redirect,
   RouterProvider,
 } from "react-router-dom";
@@ -100,7 +101,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/*",
-        element: <Error404Page />,
+        element: <Navigate to="/404" />,
       },
     ],
   },
