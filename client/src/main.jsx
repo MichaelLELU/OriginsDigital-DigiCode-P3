@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
-  Navigate,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
 import axios from "axios";
@@ -18,6 +18,7 @@ import LoginPage from "./pages/loginpage/LoginPage";
 import AdminPage from "./pages/adminpage/AdminPage";
 import UserPage from "./pages/userpage/UserPage";
 import RgpdPage from "./pages/rgpdpage/rgpdPage";
+import Error404Page from "./pages/errorpage/Error404Page";
 
 const express = import.meta.env.VITE_API_URL;
 
@@ -39,28 +40,34 @@ const router = createBrowserRouter([
         path: "/categories/:name",
         element: <CategoryPage />,
         loader: async ({ params }) => {
-          try {
-            return await axios
-              .get(
-                `${express}/api/categories/${params.name.replaceAll("-", " ").toLowerCase()}`
-              )
-              .then((res) => res.data);
-          } catch (error) {
-            return window.history.back();
-          }
+          const fetchCategory = async () => {
+            try {
+              return await axios
+                .get(`${express}/api/categories/${params.name}`)
+                .then((res) => res.data);
+            } catch (error) {
+              return redirect("/404");
+            }
+          };
+
+          return fetchCategory();
         },
       },
       {
         path: "/video/:id",
         element: <VideoPage />,
-        loader: async ({ params }) => {
-          try {
-            return await axios
-              .get(`${express}/api/videos/${params.id}`)
-              .then((res) => res.data);
-          } catch (error) {
-            return window.history.back();
-          }
+        loader: ({ params }) => {
+          const fetchVideo = async () => {
+            try {
+              return await axios
+                .get(`${express}/api/videos/${params.id}`)
+                .then((res) => res.data);
+            } catch (error) {
+              return redirect("/404");
+            }
+          };
+
+          return fetchVideo();
         },
       },
       {
@@ -88,8 +95,12 @@ const router = createBrowserRouter([
         element: <RgpdPage />,
       },
       {
+        path: "/404",
+        element: <Error404Page />,
+      },
+      {
         path: "/*",
-        element: <Navigate to="/" />,
+        element: <Error404Page />,
       },
     ],
   },
