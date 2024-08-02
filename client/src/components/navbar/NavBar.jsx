@@ -33,14 +33,12 @@ export default function NavBar({ user, setUser }) {
           <div>
             {user && user.role === "user" && (
               <Link to="/user">
-                {" "}
                 <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
               </Link>
             )}
 
             {user && user.role === "admin" && (
               <Link to="/history9">
-                {" "}
                 <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
               </Link>
             )}

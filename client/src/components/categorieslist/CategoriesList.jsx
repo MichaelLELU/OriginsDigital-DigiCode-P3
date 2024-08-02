@@ -15,9 +15,7 @@ export default function CategoriesList({ category }) {
   useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
     const fetchCategoryVideo = async () => {
-      const response = await fetch(
-        `${express}/api/categories/${name || category}`
-      );
+      const response = await fetch(`${express}/api/categories/${name}`);
       const data = await response.json();
       setResult(data);
     };

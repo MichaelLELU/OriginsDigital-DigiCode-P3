@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 import "./HeroSlider.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function HeroSlider({numberOfSlides = null}) {
+export default function HeroSlider({ numberOfSlides = null }) {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function HeroSlider({numberOfSlides = null}) {
         setVideoData(data);
       });
     } catch (err) {
-     if (err) toast.error("Error when fetching data");
+      if (err) toast.error("Error when fetching data");
     }
   }, []);
 

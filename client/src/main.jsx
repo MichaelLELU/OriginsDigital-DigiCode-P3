@@ -5,7 +5,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "axios";
 
 import App from "./App";
@@ -35,25 +34,31 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <CategoriesPage />,
         loader: () => fetch(`${express}/api/categories`),
-        children: [
-          {
-            path: "/categories/:name",
-            element: <CategoryPage />,
-            loader: () => fetch(`${express}/api/categories`),
-          },
-        ],
+      },
+      {
+        path: "/categories/:name",
+        element: <CategoryPage />,
+        loader: async ({ params }) => {
+          try {
+            return await axios
+              .get(
+                `${express}/api/categories/${params.name.replaceAll("-", " ").toLowerCase()}`
+              )
+              .then((res) => res.data);
+          } catch (error) {
+            return window.history.back();
+          }
+        },
       },
       {
         path: "/video/:id",
         element: <VideoPage />,
         loader: async ({ params }) => {
           try {
-            const response = await axios.get(
-              `${express}/api/videos/${params.id}`
-            );
-            return response.data;
+            return await axios
+              .get(`${express}/api/videos/${params.id}`)
+              .then((res) => res.data);
           } catch (error) {
-            toast.error("An error occured, please try again later");
             return window.history.back();
           }
         },
