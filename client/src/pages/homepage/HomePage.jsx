@@ -8,6 +8,7 @@ import "./HomePage.css";
 
 export default function HomePage() {
   const videoData = useLoaderData();
+  console.warn(videoData);
 
   const newVideos = videoData[0];
   const randomVideos = videoData[1];
