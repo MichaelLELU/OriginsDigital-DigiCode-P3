@@ -15,7 +15,7 @@ export default function Filter({ category }) {
             // eslint-disable-next-line react/no-array-index-key
             key={`${c.name}_${index}`}
           >
-            <span className="categories-mapped-name">{`${c.name.charAt(0).toUpperCase()}${c.name.slice(1)}`}</span>
+            <span className="categories-mapped-name">{c.name}</span>
           </Link>
         ))}
       </div>
