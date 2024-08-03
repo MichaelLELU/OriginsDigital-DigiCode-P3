@@ -46,8 +46,6 @@ const router = createBrowserRouter([
               return redirect("/404");
             }
           };
-          /* const latest = fetch(`${express}/api/videos/misc/latest`);
-          const random = fetch(`${express}/api/videos/misc/random`); */
 
           return fetchLatestAndRandom();
         },
