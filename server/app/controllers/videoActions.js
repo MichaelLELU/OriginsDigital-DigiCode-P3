@@ -116,6 +116,16 @@ const latest = async (req, res, next) => {
   }
 };
 
+const herosliderVideos = async (req, res, next) => {
+  try {
+    const videos = await tables.video.herosliderVideos();
+
+    res.json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   read,
@@ -125,4 +135,5 @@ module.exports = {
   query,
   random,
   latest,
+  herosliderVideos,
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable import/no-unresolved */
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,20 +13,32 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function HeroSlider({ numberOfSlides = null }) {
+export default function HeroSlider({
+  numberOfSlides = null,
+  currentUser = null,
+}) {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
     try {
-      axios.get(`${express}/api/videos`).then((response) => {
-        const { data } = response;
+      const fetchHerosliderVideos = async () => {
+        const data = await axios
+          .get(
+            currentUser
+              ? `${express}/api/videos`
+              : `${express}/api/videos/misc/heroslider`
+          )
+          .then((response) => response.data);
+
         setVideoData(data);
-      });
+      };
+
+      fetchHerosliderVideos();
     } catch (err) {
       if (err) toast.error("Error when fetching data");
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <Swiper
@@ -66,4 +79,11 @@ export default function HeroSlider({ numberOfSlides = null }) {
 
 HeroSlider.propTypes = {
   numberOfSlides: PropTypes.number.isRequired,
+  currentUser: PropTypes.shape({
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  }),
 };

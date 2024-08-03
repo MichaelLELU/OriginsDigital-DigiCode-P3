@@ -92,6 +92,15 @@ class VideoRepository extends AbstractRepository {
 
     return rows;
   }
+
+  // TODO: Get videos "favorited" by the admin to add them to the hero slider
+  async herosliderVideos() {
+    const [rows] = await this.database.query(
+      `SELECT id, title, url, image, description, date, is_connected, category_id FROM ${this.table} WHERE is_connected = 0 ORDER BY id ASC LIMIT 5`
+    );
+
+    return rows;
+  }
 }
 
 module.exports = VideoRepository;
