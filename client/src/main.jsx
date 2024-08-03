@@ -31,23 +31,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
         loader: () => {
-          const fetchLatestAndRandom = async () => {
-            try {
-              const latest = await axios
-                .get(`${express}/api/videos/misc/latest`)
-                .then((res) => res.data);
+          const latestVideos = axios
+            .get(`${express}/api/videos/misc/latest`)
+            .then((response) => response.data);
+          const randomVideos = axios
+            .get(`${express}/api/videos/misc/random`)
+            .then((response) => response.data);
 
-              const random = await axios
-                .get(`${express}/api/videos/misc/random`)
-                .then((res) => res.data);
-
-              return [latest, random];
-            } catch (error) {
-              return redirect("/404");
-            }
-          };
-
-          return fetchLatestAndRandom();
+          return Promise.all([latestVideos, randomVideos]);
         },
       },
       {

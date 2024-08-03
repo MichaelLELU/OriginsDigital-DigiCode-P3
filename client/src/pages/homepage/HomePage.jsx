@@ -8,6 +8,7 @@ import "./HomePage.css";
 
 export default function HomePage() {
   const videoData = useLoaderData();
+  console.warn(videoData);
 
   const newVideos = videoData[0];
   const randomVideos = videoData[1];
@@ -30,6 +31,7 @@ export default function HomePage() {
         <SparklesIcon color="#FFDF00" strokeWidth={1.75} />
       </h2>
       <VideoList videoData={newVideos} />
+
       <h2 className="title-home">
         {"Random videos "}
         <Dices color="#1FD360" strokeWidth={1.75} />
