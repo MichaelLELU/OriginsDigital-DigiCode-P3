@@ -11,7 +11,7 @@ export default function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.length > 2) {
+    if (inputValue.length >= 2) {
       navigate(`/result/${encodeURIComponent(inputValue)}`);
     }
     if (inputValue.length < 2) {

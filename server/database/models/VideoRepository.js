@@ -32,8 +32,7 @@ class VideoRepository extends AbstractRepository {
 
   // Edit
 
-  async edit(is_connected,id) {
-  
+  async edit(is_connected, id) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET is_connected=? WHERE id=?`,
       [is_connected, id]
@@ -69,8 +68,8 @@ class VideoRepository extends AbstractRepository {
   // Search (query)
   async query(search) {
     const [rows] = await this.database.query(
-      `SELECT id, title, url, image, description, date, is_connected, category_id FROM ${this.table} WHERE LOCATE(?, title)`,
-      [search]
+      `SELECT id, title, url, image, description, date, is_connected, category_id FROM ${this.table} WHERE LOCATE(?, title) OR LOCATE(?, description)`,
+      [search, search]
     );
 
     return rows;
