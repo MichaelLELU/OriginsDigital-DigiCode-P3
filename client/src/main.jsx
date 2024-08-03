@@ -30,7 +30,27 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        loader: () => fetch(`${express}/api/videos`),
+        loader: () => {
+          const fetchLatestAndRandom = async () => {
+            try {
+              const latest = await axios
+                .get(`${express}/api/videos/misc/latest`)
+                .then((res) => res.data);
+
+              const random = await axios
+                .get(`${express}/api/videos/misc/random`)
+                .then((res) => res.data);
+
+              return [latest, random];
+            } catch (error) {
+              return redirect("/404");
+            }
+          };
+          /* const latest = fetch(`${express}/api/videos/misc/latest`);
+          const random = fetch(`${express}/api/videos/misc/random`); */
+
+          return fetchLatestAndRandom();
+        },
       },
       {
         path: "/categories",

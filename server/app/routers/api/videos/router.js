@@ -7,6 +7,11 @@ const searchRouter = require("./search/router");
 
 router.use("/q", searchRouter);
 
+// sub-route to get random and latest videos
+const miscRouter = require("./misc/router");
+
+router.use("/misc", miscRouter);
+
 // define API routes
 
 // import video-related actions

@@ -74,6 +74,24 @@ class VideoRepository extends AbstractRepository {
 
     return rows;
   }
+
+  // Get random videos
+  async browseRandom() {
+    const [rows] = await this.database.query(
+      `SELECT id, title, url, image, description, date, is_connected, category_id FROM ${this.table} ORDER BY RAND() LIMIT 9`
+    );
+
+    return rows;
+  }
+
+  // Get latest videos
+  async browseLatest() {
+    const [rows] = await this.database.query(
+      `SELECT id, title, url, image, description, date, is_connected, category_id FROM ${this.table} ORDER BY id DESC LIMIT 9`
+    );
+
+    return rows;
+  }
 }
 
 module.exports = VideoRepository;
