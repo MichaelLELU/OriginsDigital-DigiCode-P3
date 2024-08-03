@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import { useParams, Link, useLoaderData } from "react-router-dom";
 import { ArrowLeftIcon } from "lucide-react";
 import VideoCard from "../../components/videocard/VideoCard";
