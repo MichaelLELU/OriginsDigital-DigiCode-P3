@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
@@ -14,10 +14,10 @@ export default function CategoriesList({ category }) {
   const { name } = category;
   const [result, setResult] = useState();
 
-  const fetchCategoryVideo = useMemo(
-    () => async () => {
-      const express = import.meta.env.VITE_API_URL;
+  useEffect(() => {
+    const express = import.meta.env.VITE_API_URL;
 
+    const fetchCategoryVideo = async () => {
       try {
         const data = await axios
           .get(`${express}/api/categories/${name}`)
@@ -27,13 +27,10 @@ export default function CategoriesList({ category }) {
       } catch (error) {
         toast.error("An error occured, please try again");
       }
-    },
-    [name]
-  );
+    };
 
-  useEffect(() => {
     fetchCategoryVideo();
-  }, [fetchCategoryVideo]);
+  }, [category, name]);
 
   return (
     <Swiper
