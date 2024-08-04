@@ -9,7 +9,7 @@ export default function Filter({ category }) {
       <div className="filterContainer">
         {category.map((c, index) => (
           <Link
-            to={`/categories/${c.name.replaceAll(" ", "-")}`}
+            to={`/categories/${c.name}`}
             className="filterButton"
             type="button"
             // eslint-disable-next-line react/no-array-index-key
