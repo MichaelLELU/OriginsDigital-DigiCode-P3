@@ -36,7 +36,6 @@ CREATE TABLE user (
 CREATE TABLE favorite (
     user_id INT UNSIGNED,
     video_id INT UNSIGNED,
-    is_favorite BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
 )
