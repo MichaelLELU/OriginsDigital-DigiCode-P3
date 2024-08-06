@@ -13,13 +13,10 @@ class CategoryRepository extends AbstractRepository {
     return result;
   }
 
-  async read(id) {
+  async read(name) {
     const [rows] = await this.database.query(
-      `SELECT c.name, v.id, v.title, v.image, v.is_connected
-         FROM ${this.table} AS c  
-         LEFT JOIN video AS v ON c.id = v.category_id 
-         WHERE c.name = ?`,
-      [id]
+      `SELECT c.name, v.id, v.title, v.image, v.is_connected FROM ${this.table} AS c LEFT JOIN video AS v ON c.id = v.category_id WHERE LOCATE(?, c.name)`,
+      [name]
     );
 
     return rows;

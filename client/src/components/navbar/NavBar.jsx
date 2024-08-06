@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
@@ -13,7 +14,7 @@ export default function NavBar({ user, setUser }) {
     userLogout()
       .then(() => setUser(null))
       .then(() => navigate("/"));
-    toast.info("you are logged out!");
+    toast.info("You are logged out!");
   };
 
   return (
@@ -32,14 +33,12 @@ export default function NavBar({ user, setUser }) {
           <div>
             {user && user.role === "user" && (
               <Link to="/user">
-                {" "}
                 <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
               </Link>
             )}
 
             {user && user.role === "admin" && (
               <Link to="/history9">
-                {" "}
                 <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
               </Link>
             )}
@@ -94,5 +93,5 @@ NavBar.propTypes = {
     lastname: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };

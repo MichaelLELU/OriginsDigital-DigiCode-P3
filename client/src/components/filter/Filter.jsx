@@ -7,14 +7,15 @@ export default function Filter({ category }) {
     <div className="filter-wrapper">
       <h2>Categories</h2>
       <div className="filterContainer">
-        {category.map((c) => (
+        {category.map((c, index) => (
           <Link
-            to={`/categories/${c.name.replaceAll(" ", "-")}`}
+            to={`/categories/${c.name}`}
             className="filterButton"
             type="button"
-            key={c.name}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${c.name}_${index}`}
           >
-            <span className="categories-mapped-name">{`${c.name.charAt(0).toUpperCase()}${c.name.slice(1)}`}</span>
+            <span className="categories-mapped-name">{c.name}</span>
           </Link>
         ))}
       </div>
