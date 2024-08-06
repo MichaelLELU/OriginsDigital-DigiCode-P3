@@ -96,4 +96,44 @@ const query = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, edit, add, destroy, query };
+const random = async (req, res, next) => {
+  try {
+    const videos = await tables.video.browseRandom();
+
+    res.json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const latest = async (req, res, next) => {
+  try {
+    const videos = await tables.video.browseLatest();
+
+    res.json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const herosliderVideos = async (req, res, next) => {
+  try {
+    const videos = await tables.video.herosliderVideos();
+
+    res.json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  browse,
+  read,
+  edit,
+  add,
+  destroy,
+  query,
+  random,
+  latest,
+  herosliderVideos,
+};

@@ -1,28 +1,36 @@
 /* eslint-disable import/no-unresolved */
+import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import axios from "axios";
+import VideoCard from "../videocard/VideoCard";
 import "swiper/css";
 import "swiper/css/navigation";
-import PropTypes from "prop-types";
-import VideoCard from "../videocard/VideoCard";
-import "./CategoriesList.css"
+import "./CategoriesList.css";
 
 export default function CategoriesList({ category }) {
   const { name } = category;
   const [result, setResult] = useState();
 
-useEffect(() => {
+  useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
+
     const fetchCategoryVideo = async () => {
-      const response = await fetch(`${express}/api/categories/${name || category}`);
-      const data = await response.json();
-      setResult(data);
+      try {
+        const data = await axios
+          .get(`${express}/api/categories/${name}`)
+          .then((response) => response.data);
+
+        setResult(data);
+      } catch (error) {
+        toast.error("An error occured, please try again");
+      }
     };
+
     fetchCategoryVideo();
-
-}, [category, name])  
-
+  }, [category, name]);
 
   return (
     <Swiper
@@ -56,9 +64,7 @@ useEffect(() => {
 }
 
 CategoriesList.propTypes = {
-  category: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };

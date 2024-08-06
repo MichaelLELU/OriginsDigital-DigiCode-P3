@@ -1,5 +1,6 @@
 import { Navigate, useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 
 import VideoAdd from "../../components/videoforms/VideoAdd";
 import VideoDelete from "../../components/videoforms/VideoDelete";
@@ -24,6 +25,7 @@ export default function AdminPage() {
 
   return (
     <>
+      <ToastContainer role="alert" theme="colored" />
       <h1 className="title-admin-page"> Admin pannel</h1>
       <div className="admin-panel">
         <section>
