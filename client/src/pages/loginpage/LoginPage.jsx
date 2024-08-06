@@ -39,11 +39,9 @@ export default function SignupPage() {
         })
         .then((response) => {
           setCurrentUser(response.data.user);
-          toast.success("you are logged in!");
+          toast.success("You are logged in!");
         })
         .then(() => reset());
-
-      console.warn(currentUser);
     } catch (error) {
       setResponseStatus(error.response.status);
       toast.error("An error occured, please try again");

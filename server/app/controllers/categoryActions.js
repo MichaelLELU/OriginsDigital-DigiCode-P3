@@ -10,12 +10,12 @@ const browse = async (req, res, next) => {
   }
 };
 const read = async (req, res, next) => {
-  const { id } = req.params;
+  const { name } = req.params;
 
   try {
-    const category = await tables.category.read(id);
+    const category = await tables.category.read(name);
 
-    if (category == null) {
+    if (category == null || category.length === 0) {
       res.sendStatus(404);
     } else {
       res.status(200).json(category);
@@ -24,6 +24,7 @@ const read = async (req, res, next) => {
     next(err);
   }
 };
+
 const add = async (req, res, next) => {
   const category = req.body;
 

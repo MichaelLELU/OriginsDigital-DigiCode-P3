@@ -22,8 +22,8 @@ export default function ResultPage() {
     <>
       <h1 className="sTitle">
         {result && result.length === 0
-          ? `no result for '${q}'`
-          : `result for '${q}' (${result && result.length})`}
+          ? `No result for '${q}'`
+          : `${result && result.length} result${result && result.length > 1 ? "s" : ""} for '${q}'`}
       </h1>
       <SearchBar />
       <div className="resultCards">

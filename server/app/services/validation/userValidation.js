@@ -1,8 +1,9 @@
 const Joi = require("joi");
+const xss = require("xss");
 
 const userValidationSchema = Joi.object({
-  firstname: Joi.string().max(120).required(),
-  lastname: Joi.string().max(120).required(),
+  firstname: Joi.string().min(2).max(120).required(),
+  lastname: Joi.string().min(2).max(120).required(),
   email: Joi.string()
     .max(120)
     .regex(/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
@@ -16,7 +17,14 @@ const userValidationSchema = Joi.object({
 const userValidation = (req, res, next) => {
   delete req.body.confirmemail;
   delete req.body.confirmpassword;
-  const { error } = userValidationSchema.validate(req.body, { abortEarly: false });
+
+  req.body.firstname = xss(req.body.firstname);
+  req.body.lastname = xss(req.body.lastname);
+  req.body.email = xss(req.body.email);
+
+  const { error } = userValidationSchema.validate(req.body, {
+    abortEarly: false,
+  });
 
   if (error == null) {
     next();
