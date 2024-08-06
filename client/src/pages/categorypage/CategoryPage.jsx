@@ -1,12 +1,15 @@
 import { useParams, Link, useLoaderData } from "react-router-dom";
 import { ArrowLeftIcon } from "lucide-react";
 import VideoCard from "../../components/videocard/VideoCard";
+import Filter from "../../components/filter/Filter";
 
 import "./CategoryPage.css";
 
 export default function CategoryPage() {
   const currentCategory = useParams();
-  const categoriesData = useLoaderData();
+  const LoaderData = useLoaderData();
+  const thisCategoryData = LoaderData[0];
+  const categoriesData = LoaderData[1];
 
   return (
     <>
@@ -18,12 +21,19 @@ export default function CategoryPage() {
       </Link>
       <h1 className="cTitle">{currentCategory.name.replaceAll("-", " ")}</h1>
       <div className="categoryCards">
-        {categoriesData && categoriesData[0].id !== null ? (
-          categoriesData.map((v) => <VideoCard video={v} key={v.id} />)
+        {thisCategoryData && thisCategoryData[0].id !== null ? (
+          thisCategoryData.map((v) => <VideoCard video={v} key={v.id} />)
         ) : (
           <h2>There are no videos associated with this category</h2>
         )}
       </div>
+
+      <Filter category={categoriesData} />
+      <style>
+        {
+          "div.filter-wrapper { display: flex; align-items: center; flex-direction: column; }"
+        }
+      </style>
     </>
   );
 }

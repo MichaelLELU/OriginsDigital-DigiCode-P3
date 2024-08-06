@@ -52,9 +52,14 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           const fetchCategory = async () => {
             try {
-              return await axios
+              const specificCategory = await axios
                 .get(`${express}/api/categories/${params.name}`)
                 .then((res) => res.data);
+              const allCategories = await axios
+                .get(`${express}/api/categories`)
+                .then((res) => res.data);
+
+              return [specificCategory, allCategories];
             } catch (error) {
               return redirect("/404");
             }
