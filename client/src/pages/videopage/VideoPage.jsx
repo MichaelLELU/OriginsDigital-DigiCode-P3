@@ -4,7 +4,8 @@ import {
   useNavigate,
   useOutletContext,
 } from "react-router-dom";
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./VideoPage.css";
 import { HistoryIcon } from "lucide-react";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
@@ -12,8 +13,71 @@ import CategoriesList from "../../components/categorieslist/CategoriesList";
 export default function VideoPage() {
   const videoData = useLoaderData();
   const { currentUser } = useOutletContext();
-
+  const [isFavorite, setIsFavorite] = useState(false);
   const Navigate = useNavigate();
+
+  // view if video is in favorites
+  useEffect(() => {
+    const express = import.meta.env.VITE_API_URL;
+    const fetchFavorite = async () => {
+      try {
+        const response = await axios.get(
+          `${express}/api/favorites/check/${videoData.id}`,
+          {
+            user_id: currentUser.id,
+          }
+        );
+        console.info(response);
+
+        if (response.status === 200) {
+          setIsFavorite(true);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (currentUser) {
+      fetchFavorite();
+    }
+  }, [videoData.id, currentUser]);
+
+  const addFavorite = async () => {
+    const express = import.meta.env.VITE_API_URL;
+    try {
+      await axios.post(`${express}/api/favorites/${videoData.id}`, {
+        user_id: currentUser.id,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeFavorite = async () => {
+    const express = import.meta.env.VITE_API_URL;
+    try {
+      await axios.delete(`${express}/api/favorites/${videoData.id}`, {
+        data: {
+          user_id: currentUser.id,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const toggleFavorite = () => {
+    try {
+      if (isFavorite === false) {
+        setIsFavorite(true);
+        addFavorite();
+      } else {
+        setIsFavorite(false);
+        removeFavorite();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     if (videoData.is_connected && !currentUser) {
@@ -65,6 +129,9 @@ export default function VideoPage() {
                 </span>
               </p>
               <p>{videoData.description}</p>
+              <button type="button" onClick={toggleFavorite}>
+                {isFavorite === false ? "🖤" : "❤️"}
+              </button>
             </div>
           </div>
           <h3 className="related-videos">
