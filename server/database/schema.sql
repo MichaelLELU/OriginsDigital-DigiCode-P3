@@ -33,15 +33,23 @@ CREATE TABLE user (
     FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
+-- Favoris (utilisateur)
 CREATE TABLE favorite (
     user_id INT UNSIGNED,
     video_id INT UNSIGNED,
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
-)
+);
+
+-- Favoris (admin) -> heroslider
+CREATE TABLE heroslider (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    video_id INT UNSIGNED,
+    FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
+);
 
 -- Création de roles
 INSERT INTO role (name) VALUES ('user'), ('admin');
 
--- Création de catégories "exemples"
+-- Création de catégories par défaut
 INSERT INTO category (name) VALUES ('Animals'), ('Sports'), ('Music'), ('Education'), ('Entertainment');
