@@ -20,7 +20,12 @@ router.use("/categories", categoriesRouter);
 
 const authRouter = require("./auth/router");
 
-router.use("/auth", authRouter)
+router.use("/auth", authRouter);
+
+const favoriteRouter = require("./favorite/router");
+
+router.use("/favorites", favoriteRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

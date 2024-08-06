@@ -1,6 +1,7 @@
 const UserRepository = require("./models/UserRepository");
 const VideoRepository = require("./models/VideoRepository");
 const CategoryRepository = require("./models/CategoryRepository");
+const FavoriteRepository = require("./models/FavoriteRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -17,6 +18,9 @@ tables.user = new UserRepository();
 tables.video = new VideoRepository();
 /** table category */
 tables.category = new CategoryRepository();
+/** table favorite */
+tables.favorite = new FavoriteRepository();
+
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table
