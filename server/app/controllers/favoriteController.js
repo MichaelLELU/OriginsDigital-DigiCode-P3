@@ -8,10 +8,11 @@ const checkFavorite = async (req, res, next) => {
 
     const favorite = await tables.favorite.isVideoFavorite(user_id, id);
 
-    if (favorite == null || favorite.length === 0) {
+    if (favorite == null) {
       res.sendStatus(204);
+    } else {
+      res.status(200).json(favorite);
     }
-    res.status(200).json(favorite);
   } catch (err) {
     next(err);
   }

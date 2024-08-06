@@ -9,7 +9,7 @@ const {
 } = require("../../../controllers/favoriteController");
 
 // check if a video is favorited
-router.get("/check/:id", checkFavorite);
+router.post("/check/:id", checkFavorite);
 
 // add a video to favorites
 router.post("/:id", addFavorite);

@@ -5,7 +5,7 @@
   position: relative;
 
   .video-title {
-    text-transform: capitalize;
+    text-align: center;
     margin-top: 4rem;
     padding: 0 2rem;
     font-size: 1.5rem;
@@ -42,16 +42,34 @@
     width: 75%;
   }
 
+  .favorite-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
   .video-metadata {
     display: flex;
-    justify-content: space-evenly;
     margin: 0;
+    max-width: none;
+  }
+  .video-metadata.full {
+    justify-content: space-around;
+  }
+  .video-metadata.short {
+    justify-content: space-evenly;
+
+    @media screen and (width >= 800px) {
+      gap: 2rem;
+    }
   }
 }
 
 .redirection-message {
   white-space: pre-wrap;
   line-height: 2em;
+  display: block;
+  text-align: center;
 }
 
 .related-videos {
