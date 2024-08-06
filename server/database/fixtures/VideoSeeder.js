@@ -18,6 +18,7 @@ class VideoSeeder extends AbstractSeeder {
         description: this.faker.lorem.paragraph(), // generates a fake description
         date: this.faker.date.recent(), // generate a fake date
         category_id: this.faker.number.int({ min: 1, max: 5 }),
+        is_connected: this.faker.number.int({ min: 0, max: 1 }),
       };
 
       // insert the fakeVideo data into the "video" table
