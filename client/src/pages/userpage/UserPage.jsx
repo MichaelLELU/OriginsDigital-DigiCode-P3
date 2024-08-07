@@ -37,7 +37,7 @@ export default function UserPage() {
         </section>
       </div>
 
-      <section>
+      <section className="user-favorites">
         <h2>
           Your favorite videos <HeartIcon color="red" fill="red" />
         </h2>
