@@ -34,7 +34,7 @@ class FavoriteRepository extends AbstractRepository {
 
   async allFavorites(userId) {
     const [rows] = await this.database.query(
-      `SELECT v.id, v.title, v.url, v.image, v.description, v.date, v.is_connected, v.category_id FROM ${this.table} AS f JOIN video AS v ON f.video_id = v.id WHERE f.user_id = ?`,
+      `SELECT v.id, v.title, v.url, v.image, v.description, v.date, v.is_connected, c.name AS category FROM ${this.table} AS f JOIN video AS v ON f.video_id = v.id JOIN category AS c ON v.category_id = c.id WHERE f.user_id = ?`,
       [userId]
     );
 
