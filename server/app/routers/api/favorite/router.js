@@ -19,6 +19,6 @@ router.post("/:id", addFavorite);
 router.delete("/:id", removeFavorite);
 
 // get all favorites
-router.get("/:userId", allFavorites);
+router.get("/:id", allFavorites);
 
 module.exports = router;

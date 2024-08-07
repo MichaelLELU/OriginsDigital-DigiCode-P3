@@ -46,9 +46,9 @@ const removeFavorite = async (req, res, next) => {
 
 const allFavorites = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const { id } = req.params;
 
-    const favorites = await tables.favorite.allFavorites(userId);
+    const favorites = await tables.favorite.allFavorites(id);
 
     res.status(200).json(favorites);
   } catch (err) {
