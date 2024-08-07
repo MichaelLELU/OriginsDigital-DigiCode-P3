@@ -30,23 +30,22 @@ export default function VideoPage() {
   // view if video is in favorites
   useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
-    const fetchFavorite = async () => {
-      try {
-        const response = await axios.post(
-          `${express}/api/favorites/check/${videoData.id}`,
-          {
-            user_id: currentUser.id,
-          }
-        );
-
-        if (response.status === 200) {
-          setIsFavorite(true);
-        }
-      } catch (error) {
-        toast.error("An error occurred while retrieving your favorites");
-      }
-    };
     if (currentUser) {
+      const fetchFavorite = async () => {
+        try {
+          const response = await axios.post(
+            `${express}/api/favorites/check/${videoData.id}`,
+            {
+              user_id: currentUser.id,
+            }
+          );
+          if (response.status === 200) {
+            setIsFavorite(true);
+          }
+        } catch (error) {
+          toast.error("An error occurred while retrieving your favorites");
+        }
+      };
       fetchFavorite();
     }
   }, [videoData.id, currentUser]);

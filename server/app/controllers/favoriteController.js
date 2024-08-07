@@ -44,4 +44,16 @@ const removeFavorite = async (req, res, next) => {
   }
 };
 
-module.exports = { checkFavorite, addFavorite, removeFavorite };
+const allFavorites = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+
+    const favorites = await tables.favorite.allFavorites(userId);
+
+    res.status(200).json(favorites);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { checkFavorite, addFavorite, removeFavorite, allFavorites };

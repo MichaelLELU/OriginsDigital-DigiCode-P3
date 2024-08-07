@@ -1,5 +1,5 @@
 import { Navigate, useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+
 import { ToastContainer } from "react-toastify";
 
 import VideoAdd from "../../components/videoforms/VideoAdd";
@@ -14,16 +14,9 @@ import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
 export default function AdminPage() {
   const { currentUser } = useOutletContext();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentUser.role !== "admin") {
-        <Navigate to="/" />;
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [currentUser]);
-
-  return (
+  return currentUser?.role !== "admin" ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <ToastContainer role="alert" theme="colored" />
       <h1 className="title-admin-page"> Admin pannel</h1>

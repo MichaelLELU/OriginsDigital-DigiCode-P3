@@ -6,6 +6,7 @@ const {
   checkFavorite,
   addFavorite,
   removeFavorite,
+  allFavorites,
 } = require("../../../controllers/favoriteController");
 
 // check if a video is favorited
@@ -16,5 +17,8 @@ router.post("/:id", addFavorite);
 
 // remove a video from favorites
 router.delete("/:id", removeFavorite);
+
+// get all favorites
+router.get("/:userId", allFavorites);
 
 module.exports = router;
