@@ -2,6 +2,7 @@ import { useOutletContext, Navigate } from "react-router-dom";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { HeartIcon } from "lucide-react";
 
 import "./UserPage.css";
 import VideoList from "../../components/videolist/VideoList";
@@ -24,18 +25,22 @@ export default function UserPage() {
     <>
       <div className="user-page-container">
         <section className="personal-information">
-          <h1 className="title-info">{currentUser?.firstname} Informations:</h1>
+          <h1 className="title-info">{currentUser?.firstname}'s profile:</h1>
           <p className="user-details">{`Firstname: ${currentUser?.firstname}`}</p>
           <p className="user-details">{`Lastname: ${currentUser?.lastname}`}</p>
           <p className="user-details">{`Email: ${currentUser?.email}`}</p>
         </section>
+
         <section className="update-information">
-          <h2>Update your personal informations</h2>
+          <h2>Update your personal information</h2>
           <NameUpdate user={currentUser} />
         </section>
       </div>
+
       <section>
-        <h2>Your Favorits Video</h2>
+        <h2>
+          Your favorite videos <HeartIcon color="red" fill="red" />
+        </h2>
         <VideoList videoData={videoData} />
       </section>
     </>

@@ -43,10 +43,20 @@
   .user-page-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 10%;
     padding: 4em;
+    width: 75%;
+    margin: 0 auto;
+
     .title-info {
       text-align: start;
     }
+  }
+}
+
+.update-information {
+  h2 {
+    width: 20ch;
   }
 }
