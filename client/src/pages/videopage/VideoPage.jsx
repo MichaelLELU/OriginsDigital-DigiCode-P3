@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Link,
-  useOutletContext,
-  useNavigate,
-  useLoaderData,
-} from "react-router-dom";
+import { Link, useNavigate, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { HistoryIcon, HeartIcon, HeartOffIcon } from "lucide-react";
@@ -13,8 +8,9 @@ import "./VideoPage.css";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
 
 export default function VideoPage() {
-  const videoData = useLoaderData();
-  const { currentUser } = useOutletContext();
+  const loaderData = useLoaderData();
+  const videoData = loaderData[0];
+  const currentUser = loaderData[1];
   const Navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -89,16 +85,8 @@ export default function VideoPage() {
   };
 
   useEffect(() => {
-    if (videoData.is_connected) {
-      const timerId = setTimeout(() => Navigate("/login"), 5000);
-      console.info("Timer started with id:", timerId);
-
-      if (currentUser) {
-        clearTimeout(timerId);
-        console.info("Current timer cleared with id:", timerId);
-        clearTimeout(timerId - 1);
-        console.info("Previous timer cleared with id:", timerId - 1);
-      }
+    if (videoData.is_connected && currentUser === null) {
+      setTimeout(() => Navigate("/login"), 5000);
     }
   }, [videoData.is_connected, currentUser, Navigate]);
 
