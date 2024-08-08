@@ -16,14 +16,16 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      <NavBar user={currentUser} setUser={setCurrentUser} />
-      <main>
-        <ToastContainer role="alert" theme="colored" />
-        <Outlet context={{ currentUser, setCurrentUser }} />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <ToastContainer role="alert" theme="colored" />
+      <div className="app-container">
+        <NavBar user={currentUser} setUser={setCurrentUser} />
+        <main>
+          <Outlet context={{ currentUser, setCurrentUser }} />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
 
