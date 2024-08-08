@@ -8,6 +8,8 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { HistoryIcon, HeartIcon, HeartOffIcon } from "lucide-react";
+import addFavorite from "../../utils/addFavorites";
+import removeFavorite from "../../utils/removeFavorites";
 
 import "./VideoPage.css";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
@@ -50,47 +52,19 @@ export default function VideoPage() {
     }
   }, [videoData.id, currentUser]);
 
-  const addFavorite = async () => {
-    const express = import.meta.env.VITE_API_URL;
-    try {
-      await axios.post(`${express}/api/favorites/${videoData.id}`, {
-        user_id: currentUser.id,
-      });
-    } catch (error) {
-      toast.error("An error occurred while adding this video as favorite");
-    }
-  };
-
-  const removeFavorite = async () => {
-    const express = import.meta.env.VITE_API_URL;
-    try {
-      await axios.delete(`${express}/api/favorites/${videoData.id}`, {
-        data: {
-          user_id: currentUser.id,
-        },
-      });
-    } catch (error) {
-      toast.error("An error occurred while removing this video as favorite");
-    }
-  };
-
   const toggleFavorite = () => {
-    try {
-      if (!isFavorite) {
-        addFavorite();
-        setIsFavorite(true);
-      } else {
-        removeFavorite();
-        setIsFavorite(false);
-      }
-    } catch (error) {
-      toast.error("An error occurred, please try again later");
+    if (!isFavorite) {
+      addFavorite(videoData.id, currentUser.id);
+      setIsFavorite(true);
+    } else {
+      removeFavorite(videoData.id, currentUser.id);
+      setIsFavorite(false);
     }
   };
 
   useEffect(() => {
     if (videoData.is_connected && !currentUser) {
-      setTimeout(() => Navigate("/login"), 5000);
+      setTimeout(() => Navigate("/login"), 4000);
       // TODO: change this so it doesn't redirect to the login page when you're connected and reload the page on a video that requires to be connected to view
     }
   }, [videoData.is_connected, currentUser, Navigate]);
