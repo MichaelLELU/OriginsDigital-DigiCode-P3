@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -20,7 +19,6 @@ import AdminPage from "./pages/adminpage/AdminPage";
 import UserPage from "./pages/userpage/UserPage";
 import RgpdPage from "./pages/rgpdpage/rgpdPage";
 import Error404Page from "./pages/errorpage/Error404Page";
-import fetchAuth from "./utils/auth";
 
 const express = import.meta.env.VITE_API_URL;
 
@@ -53,19 +51,20 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           const fetchCategory = async () => {
             try {
-              return await axios
+              const specificCategory = await axios
                 .get(`${express}/api/categories/${params.name}`)
                 .then((res) => res.data);
+              const allCategories = await axios
+                .get(`${express}/api/categories`)
+                .then((res) => res.data);
+
+              return [specificCategory, allCategories];
             } catch (error) {
               return redirect("/404");
             }
           };
 
-          const allCategories = await axios
-            .get(`${express}/api/categories`)
-            .then((res) => res.data);
-
-          return Promise.all([fetchCategory(), allCategories]);
+          return fetchCategory();
         },
       },
       {
@@ -81,10 +80,8 @@ const router = createBrowserRouter([
               return redirect("/404");
             }
           };
-          const videoData = fetchVideo();
-          const currentUser = fetchAuth();
 
-          return Promise.all([videoData, currentUser]);
+          return fetchVideo();
         },
       },
       {
@@ -102,12 +99,10 @@ const router = createBrowserRouter([
       {
         path: "/history9",
         element: <AdminPage />,
-        loader: () => fetchAuth(),
       },
       {
         path: "/user",
         element: <UserPage />,
-        loader: () => fetchAuth(),
       },
       {
         path: "/rgpd",
@@ -127,8 +122,4 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);

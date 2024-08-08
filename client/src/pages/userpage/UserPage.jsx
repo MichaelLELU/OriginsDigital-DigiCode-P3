@@ -1,4 +1,4 @@
-import { Navigate, useLoaderData } from "react-router-dom";
+import { useOutletContext, Navigate } from "react-router-dom";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ import VideoList from "../../components/videolist/VideoList";
 import NameUpdate from "../../components/userforms/NameUpdate";
 
 export default function UserPage() {
-  const currentUser = useLoaderData();
+  const { currentUser } = useOutletContext();
   const [videoData, setVideoData] = useState();
 
   const express = import.meta.env.VITE_API_URL;
