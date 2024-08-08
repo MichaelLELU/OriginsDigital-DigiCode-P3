@@ -2,14 +2,13 @@ import axios from "axios";
 
 const fetchAuth = async () => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/auth/checkauth`,
-      {
+    return await axios
+      .get(`${import.meta.env.VITE_API_URL}/api/auth/checkauth`, {
         withCredentials: true,
-      }
-    );
-    return response.data.user;
+      })
+      .then((response) => response.data.user);
   } catch (err) {
+    console.error(err);
     return null;
   }
 };

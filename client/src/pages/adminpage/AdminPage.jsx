@@ -1,4 +1,4 @@
-import { Navigate, useOutletContext } from "react-router-dom";
+import { Navigate, useLoaderData } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 
@@ -12,9 +12,9 @@ import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
 
 export default function AdminPage() {
-  const { currentUser } = useOutletContext();
+  const currentUser = useLoaderData();
 
-  return currentUser?.role !== "admin" ? (
+  return currentUser.role !== "admin" || !currentUser ? (
     <Navigate to="/" />
   ) : (
     <>

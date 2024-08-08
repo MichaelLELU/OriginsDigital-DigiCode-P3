@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Link,
-  useOutletContext,
-  useNavigate,
-  useLoaderData,
-} from "react-router-dom";
+import { Link, useNavigate, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { HistoryIcon, HeartIcon, HeartOffIcon } from "lucide-react";
@@ -15,8 +10,9 @@ import "./VideoPage.css";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
 
 export default function VideoPage() {
-  const videoData = useLoaderData();
-  const { currentUser } = useOutletContext();
+  const loaderData = useLoaderData();
+  const currentUser = loaderData[0];
+  const videoData = loaderData[1];
   const Navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -50,7 +46,7 @@ export default function VideoPage() {
       };
       fetchFavorite();
     }
-  }, [videoData.id, currentUser]);
+  }, [videoData.id, currentUser, Navigate]);
 
   const toggleFavorite = () => {
     if (!isFavorite) {

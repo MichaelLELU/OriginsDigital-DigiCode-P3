@@ -1,4 +1,4 @@
-import { useOutletContext, Navigate } from "react-router-dom";
+import { Navigate, useLoaderData } from "react-router-dom";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ import VideoList from "../../components/videolist/VideoList";
 import NameUpdate from "../../components/userforms/NameUpdate";
 
 export default function UserPage() {
-  const { currentUser } = useOutletContext();
+  const currentUser = useLoaderData();
   const [videoData, setVideoData] = useState();
 
   const express = import.meta.env.VITE_API_URL;
@@ -41,7 +41,11 @@ export default function UserPage() {
         <h2>
           Your favorite videos <HeartIcon color="red" fill="red" />
         </h2>
-        <VideoList videoData={videoData} />
+        {videoData?.length > 0 ? (
+          <VideoList videoData={videoData} />
+        ) : (
+          <p className="no-favorites">You have no favorite videos, yet...</p>
+        )}
       </section>
     </>
   );
