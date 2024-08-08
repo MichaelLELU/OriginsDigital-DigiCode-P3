@@ -89,13 +89,15 @@ export default function VideoPage() {
   };
 
   useEffect(() => {
-    let timerId;
     if (videoData.is_connected) {
-      timerId = setTimeout(() => Navigate("/login"), 5000);
+      const timerId = setTimeout(() => Navigate("/login"), 5000);
+      console.info("Timer started with id:", timerId);
 
       if (currentUser) {
         clearTimeout(timerId);
+        console.info("Current timer cleared with id:", timerId);
         clearTimeout(timerId - 1);
+        console.info("Previous timer cleared with id:", timerId - 1);
       }
     }
   }, [videoData.is_connected, currentUser, Navigate]);
