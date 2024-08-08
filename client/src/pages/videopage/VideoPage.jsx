@@ -89,9 +89,14 @@ export default function VideoPage() {
   };
 
   useEffect(() => {
-    if (videoData.is_connected && !currentUser) {
-      setTimeout(() => Navigate("/login"), 5000);
-      // TODO: change this so it doesn't redirect to the login page when you're connected and reload the page on a video that requires to be connected to view
+    let timerId;
+    if (videoData.is_connected) {
+      timerId = setTimeout(() => Navigate("/login"), 5000);
+
+      if (currentUser) {
+        clearTimeout(timerId);
+        clearTimeout(timerId - 1);
+      }
     }
   }, [videoData.is_connected, currentUser, Navigate]);
 
