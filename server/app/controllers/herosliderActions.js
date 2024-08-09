@@ -5,7 +5,11 @@ const allHerosliderVideos = async (req, res, next) => {
   try {
     const herosliderVideos = await tables.heroslider.allHerosliderVideos();
 
-    res.json(herosliderVideos);
+    if (herosliderVideos.length === 0) {
+      res.sendStatus(204);
+    } else {
+      res.json(herosliderVideos);
+    }
   } catch (err) {
     next(err);
   }

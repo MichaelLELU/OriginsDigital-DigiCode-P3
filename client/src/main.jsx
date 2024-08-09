@@ -81,15 +81,17 @@ const router = createBrowserRouter([
         loader: ({ params }) => {
           const fetchVideo = async () => {
             try {
-              return await axios
+              const data = await axios
                 .get(`${express}/api/videos/${params.id}`)
                 .then((response) => response.data);
+
+              return Promise.all([fetchUser(), data]);
             } catch (error) {
               return redirect("/404");
             }
           };
 
-          return Promise.all([fetchUser(), fetchVideo()]);
+          return fetchVideo();
         },
       },
       {
