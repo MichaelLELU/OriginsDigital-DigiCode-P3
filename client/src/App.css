@@ -20,7 +20,8 @@ body {
 
 .app-container {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--footer-height));
+  padding-bottom: var(--footer-height);
 }
 
 main {
