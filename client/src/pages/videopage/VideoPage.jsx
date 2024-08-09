@@ -25,9 +25,9 @@ export default function VideoPage() {
     setIsHovered(false);
   };
 
-  // view if video is in favorites
   useEffect(() => {
     const express = import.meta.env.VITE_API_URL;
+
     if (currentUser) {
       const fetchFavorite = async () => {
         try {
@@ -44,6 +44,7 @@ export default function VideoPage() {
           toast.error("An error occurred while retrieving your favorites");
         }
       };
+
       fetchFavorite();
     }
   }, [videoData.id, currentUser, Navigate]);
@@ -59,16 +60,8 @@ export default function VideoPage() {
   };
 
   useEffect(() => {
-    if (videoData.is_connected) {
-      const timerId = setTimeout(() => Navigate("/login"), 5000);
-      console.info("Timer started with id:", timerId);
-
-      if (currentUser) {
-        clearTimeout(timerId);
-        console.info("Current timer cleared with id:", timerId);
-        clearTimeout(timerId - 1);
-        console.info("Previous timer cleared with id:", timerId - 1);
-      }
+    if (videoData.is_connected && currentUser === null) {
+      setTimeout(() => Navigate("/login"), 5000);
     }
   }, [videoData.is_connected, currentUser, Navigate]);
 
