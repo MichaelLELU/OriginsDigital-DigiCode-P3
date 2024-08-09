@@ -23,6 +23,13 @@ import Error404Page from "./pages/errorpage/Error404Page";
 
 const express = import.meta.env.VITE_API_URL;
 
+const fetchUser = async () =>
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/api/auth/checkauth`, {
+      withCredentials: true,
+    })
+    .then((response) => response.data.user);
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -74,9 +81,11 @@ const router = createBrowserRouter([
         loader: ({ params }) => {
           const fetchVideo = async () => {
             try {
-              return await axios
+              const data = await axios
                 .get(`${express}/api/videos/${params.id}`)
-                .then((res) => res.data);
+                .then((response) => response.data);
+
+              return Promise.all([fetchUser(), data]);
             } catch (error) {
               return redirect("/404");
             }
@@ -100,10 +109,12 @@ const router = createBrowserRouter([
       {
         path: "/history9",
         element: <AdminPage />,
+        loader: () => fetchUser(),
       },
       {
         path: "/user",
         element: <UserPage />,
+        loader: () => fetchUser(),
       },
       {
         path: "/rgpd",

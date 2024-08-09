@@ -20,6 +20,8 @@ body {
 
 .app-container {
   position: relative;
+  min-height: calc(100vh - var(--footer-height));
+  padding-bottom: var(--footer-height);
 }
 
 main {
@@ -35,16 +37,18 @@ p {
   max-width: 80ch;
 }
 
+/* https://github.com/fkhadra/react-toastify/issues/307#issuecomment-456821982 */
+.Toastify__toast-body {
+  font-family: "Exo";
+}
+
 /** Style commun aux liens de navigation */
 a {
   text-decoration: none;
   color: var(--accent-color);
 }
-a:visited {
-  color: var(--main-color-gray);
-}
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline dotted;
 }
 
 /** Style commun aux boutons de navigation */

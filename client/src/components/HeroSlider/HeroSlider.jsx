@@ -24,12 +24,19 @@ export default function HeroSlider({
     try {
       const fetchHerosliderVideos = async () => {
         const data = await axios
-          .get(
-            currentUser
-              ? `${express}/api/videos`
-              : `${express}/api/videos/misc/heroslider`
-          )
-          .then((response) => response.data);
+          .get(`${express}/api/heroslider`)
+          .then((response) => {
+            if (response.status === 204)
+              return [
+                {
+                  id: "none",
+                  title: "No videos found",
+                  image:
+                    "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg",
+                },
+              ];
+            return response.data;
+          });
 
         setVideoData(data);
       };

@@ -13,4 +13,7 @@
   --nav-horizontal-padding: 2rem;
   --nav-vertical-padding: 1rem;
   --nav-menu-size: 2.5rem;
+
+  /* footer */
+  --footer-height: 10rem;
 }
