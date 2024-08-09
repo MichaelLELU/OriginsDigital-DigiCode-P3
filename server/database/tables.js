@@ -2,6 +2,7 @@ const UserRepository = require("./models/UserRepository");
 const VideoRepository = require("./models/VideoRepository");
 const CategoryRepository = require("./models/CategoryRepository");
 const FavoriteRepository = require("./models/FavoriteRepository");
+const HerosliderRepository = require("./models/HerosliderRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -20,6 +21,8 @@ tables.video = new VideoRepository();
 tables.category = new CategoryRepository();
 /** table favorite */
 tables.favorite = new FavoriteRepository();
+/** table heroslider */
+tables.heroslider = new HerosliderRepository();
 
 /* ************************************************************************* */
 

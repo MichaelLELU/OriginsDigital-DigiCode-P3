@@ -26,6 +26,10 @@ const favoriteRouter = require("./favorite/router");
 
 router.use("/favorites", favoriteRouter);
 
+const herosliderRouter = require("./heroslider/router");
+
+router.use("/heroslider", herosliderRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -20,6 +20,8 @@ body {
 
 .app-container {
   position: relative;
+  min-height: calc(100vh - var(--footer-height));
+  padding-bottom: var(--footer-height);
 }
 
 main {
@@ -40,11 +42,8 @@ a {
   text-decoration: none;
   color: var(--accent-color);
 }
-a:visited {
-  color: var(--main-color-gray);
-}
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline dotted;
 }
 
 /** Style commun aux boutons de navigation */

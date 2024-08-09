@@ -1,7 +1,4 @@
-import { Navigate, useOutletContext } from "react-router-dom";
-
-import { ToastContainer } from "react-toastify";
-
+import { Navigate, useLoaderData } from "react-router-dom";
 import VideoAdd from "../../components/videoforms/VideoAdd";
 import VideoDelete from "../../components/videoforms/VideoDelete";
 import CategoryAdd from "../../components/categoryforms/CategoryAdd";
@@ -12,13 +9,12 @@ import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
 
 export default function AdminPage() {
-  const { currentUser } = useOutletContext();
+  const currentUser = useLoaderData();
 
-  return currentUser?.role !== "admin" ? (
+  return currentUser.role !== "admin" || !currentUser ? (
     <Navigate to="/" />
   ) : (
     <>
-      <ToastContainer role="alert" theme="colored" />
       <h1 className="title-admin-page"> Admin pannel</h1>
       <div className="admin-panel">
         <section>
