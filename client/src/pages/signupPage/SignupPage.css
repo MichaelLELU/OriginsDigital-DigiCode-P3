@@ -80,6 +80,7 @@
 @media screen and (width > 800px) {
   .signup-form {
     padding: 1rem 2rem;
+    height: 32rem;
   }
 
   .msg-error {
