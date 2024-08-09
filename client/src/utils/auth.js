@@ -8,7 +8,6 @@ const fetchAuth = async () => {
       })
       .then((response) => response.data.user);
   } catch (err) {
-    console.error(err);
     return null;
   }
 };
