@@ -3,8 +3,17 @@
   flex-direction: column;
   align-items: center;
   line-height: 2;
-  border-top: solid rgba(0, 0, 0, 0.5);
-  padding-top: 2rem;
-  margin-top: 6rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
+
+  hr {
+    width: 98%;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 0;
+  }
 }
