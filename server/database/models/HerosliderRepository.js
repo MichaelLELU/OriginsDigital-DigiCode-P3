@@ -48,6 +48,15 @@ class HerosliderRepository extends AbstractRepository {
 
     return result.affectedRows;
   }
+
+  async checkHerosliderVideo(videoId) {
+    const [rows] = await this.database.query(
+      `SELECT 1 FROM ${this.table} WHERE video_id = ?`,
+      [videoId]
+    );
+
+    return rows[0];
+  }
 }
 
 module.exports = HerosliderRepository;

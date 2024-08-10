@@ -39,8 +39,25 @@ const removeHerosliderVideo = async (req, res, next) => {
   }
 };
 
+const checkHerosliderVideo = async (req, res, next) => {
+  try {
+    const { videoId } = req.params;
+    const herosliderVideo =
+      await tables.heroslider.checkHerosliderVideo(videoId);
+
+    if (herosliderVideo === undefined) {
+      res.sendStatus(204);
+    } else {
+      res.status(200).json(herosliderVideo);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   allHerosliderVideos,
   addHerosliderVideo,
   removeHerosliderVideo,
+  checkHerosliderVideo,
 };

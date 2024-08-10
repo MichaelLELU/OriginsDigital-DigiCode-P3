@@ -2,9 +2,18 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { HistoryIcon, HeartIcon, HeartOffIcon } from "lucide-react";
+import {
+  HistoryIcon,
+  HeartIcon,
+  HeartOffIcon,
+  BookmarkIcon,
+  BookmarkXIcon,
+} from "lucide-react";
+
 import addFavorite from "../../utils/addFavorites";
 import removeFavorite from "../../utils/removeFavorites";
+import addHerosliderVideo from "../../utils/addHerosliderVideo";
+import removeHerosliderVideo from "../../utils/removeHerosliderVideo";
 
 import "./VideoPage.css";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
@@ -16,6 +25,7 @@ export default function VideoPage() {
   const Navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isHerosliderVideo, setIsHerosliderVideo] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -45,9 +55,23 @@ export default function VideoPage() {
         }
       };
 
+      const fetchHerosliderVideo = async () => {
+        try {
+          const response = await axios.get(
+            `${express}/api/heroslider/${videoData.id}`
+          );
+          if (response.status === 200) {
+            setIsHerosliderVideo(true);
+          }
+        } catch (error) {
+          toast.error("An error occurred, please try again later");
+        }
+      };
+
       fetchFavorite();
+      fetchHerosliderVideo();
     }
-  }, [videoData.id, currentUser, Navigate]);
+  }, [videoData.id, currentUser]);
 
   const toggleFavorite = () => {
     if (!isFavorite) {
@@ -56,6 +80,16 @@ export default function VideoPage() {
     } else {
       removeFavorite(videoData.id, currentUser.id);
       setIsFavorite(false);
+    }
+  };
+
+  const toggleHerosliderVideo = () => {
+    if (!isHerosliderVideo) {
+      addHerosliderVideo(videoData.id);
+      setIsHerosliderVideo(true);
+    } else {
+      removeHerosliderVideo(videoData.id);
+      setIsHerosliderVideo(false);
     }
   };
 
@@ -112,7 +146,7 @@ export default function VideoPage() {
                   )}
                 </span>
 
-                {currentUser && (
+                {currentUser && currentUser.role === "user" && (
                   <button
                     type="button"
                     className="favorite-button"
@@ -126,6 +160,24 @@ export default function VideoPage() {
                         <HeartIcon fill="red" color="red" />
                       ) : (
                         <HeartOffIcon color="#FFDF00" fill="red" />
+                      ))}
+                  </button>
+                )}
+
+                {currentUser && currentUser.role === "admin" && (
+                  <button
+                    type="button"
+                    className="favorite-button"
+                    onClick={toggleHerosliderVideo}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {!isHerosliderVideo && <BookmarkIcon color="#1FD360" />}
+                    {isHerosliderVideo &&
+                      (!isHovered ? (
+                        <BookmarkIcon fill="#1FD360" color="#1FD360" />
+                      ) : (
+                        <BookmarkXIcon fill="red" color="#FFDF00" />
                       ))}
                   </button>
                 )}
