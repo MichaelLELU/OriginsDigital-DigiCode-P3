@@ -15,9 +15,6 @@
 }
 
 .menu-button {
-  background-image: url("../../assets/images/menu.svg");
-  object-fit: contain;
-  color: transparent;
   border: none;
   background-color: transparent;
   max-width: var(--nav-menu-size);
@@ -25,6 +22,25 @@
   min-height: var(--nav-menu-size);
   padding: 0;
   cursor: pointer;
+  transition: all 150ms ease-in;
+}
+
+@keyframes rotate-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.menu-button.active {
+  animation: rotate-icon 150ms forwards;
+}
+
+.menu-button.inactive {
+  transform: rotate(90deg);
+  animation: rotate-icon 150ms reverse;
 }
 
 #navlinks {

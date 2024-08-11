@@ -1,8 +1,9 @@
 /* eslint-disable react/require-default-props */
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { UserRoundCheck } from "lucide-react";
+import { UserRoundCheck, MenuIcon } from "lucide-react";
 import userLogout from "../../utils/logout";
 import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
@@ -17,16 +18,42 @@ export default function NavBar({ user, setUser }) {
     toast.info("You are logged out!");
   };
 
+  const navbarMenuButton = useRef();
+
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const popoverToggle = () => {
+    setIsMenuActive(!isMenuActive);
+    if (isMenuActive) {
+      setTimeout(
+        () => navbarMenuButton.current.classList.remove("inactive"),
+        1
+      );
+    }
+  };
+
+  useEffect(() => {
+    navbarMenuButton.current.classList.remove("inactive");
+  }, []);
+
   return (
     <>
       <nav className="navbar-container">
         <button
-          className="menu-button"
+          ref={navbarMenuButton}
+          className={
+            isMenuActive ? "menu-button active" : "menu-button inactive"
+          }
           type="button"
           popovertarget="navlinks"
           popovertargetaction="toggle"
+          onClick={popoverToggle}
         >
-          Menu
+          <MenuIcon
+            size="2.625rem"
+            color="#d9d9d9"
+            strokeWidth={2}
+            aria-label="Menu"
+          />
         </button>
 
         {user !== null ? (
@@ -45,7 +72,7 @@ export default function NavBar({ user, setUser }) {
           </div>
         ) : null}
 
-        <div id="navlinks" popover="auto">
+        <div id="navlinks" popover="manual">
           <ul>
             <li>
               <Link to="/">HOME</Link>
