@@ -10,7 +10,7 @@ import "./NavBar.css";
 export default function NavBar({ user, setUser }) {
   const navigate = useNavigate();
 
-  const toggleLogout = () => {
+  const handleLogout = () => {
     userLogout()
       .then(() => setUser(null))
       .then(() => navigate("/"));
@@ -69,7 +69,7 @@ export default function NavBar({ user, setUser }) {
               </li>
             ) : (
               <li>
-                <button type="button" onClick={toggleLogout} className="logout">
+                <button type="button" onClick={handleLogout} className="logout">
                   Logout
                 </button>
               </li>
