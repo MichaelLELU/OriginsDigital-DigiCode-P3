@@ -13,6 +13,7 @@ import {
   LogOutIcon,
 } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 import userLogout from "../../utils/logout";
 import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
@@ -29,6 +30,9 @@ export default function NavBar({ user, setUser }) {
 
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <>
       <nav className="navbar-container">
@@ -38,14 +42,22 @@ export default function NavBar({ user, setUser }) {
             type="button"
             popovertarget="navlinks"
             popovertargetaction="toggle"
+            onClick={toggleMenu}
           >
-            Menu
+            <div
+              aria-label="menu"
+              className={`burger-menu ${isMenuOpen ? "open" : ""}`}
+            >
+              <span />
+              <span />
+              <span />
+            </div>
           </button>
         ) : null}
 
         <div
           {...(isMobile
-            ? { id: "navlinks", popover: "auto" }
+            ? { id: "navlinks", popover: "manual" }
             : { id: "navlinks-desktop" })}
         >
           <ul>
