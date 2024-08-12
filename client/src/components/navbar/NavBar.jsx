@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { UserRoundCheck, MenuIcon } from "lucide-react";
+import { UserRoundCheck, UserRoundCogIcon, MenuIcon } from "lucide-react";
 import userLogout from "../../utils/logout";
 import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
@@ -66,7 +66,7 @@ export default function NavBar({ user, setUser }) {
 
             {user && user.role === "admin" && (
               <Link to="/history9">
-                <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
+                <UserRoundCogIcon size={34} color="#1fd360" strokeWidth={2} />
               </Link>
             )}
           </div>
