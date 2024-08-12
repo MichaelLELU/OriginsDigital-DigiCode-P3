@@ -15,9 +15,14 @@
   }
 }
 
-.logo {
+div.logoContainer {
+  display: flex;
+  justify-content: center;
   margin-top: 2em;
-  max-height: 6rem;
+
+  .logo {
+    max-height: 6rem;
+  }
 }
 
 .menu-button {
@@ -81,11 +86,6 @@
   max-width: 10ch;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.logoContainer {
-  display: flex;
-  justify-content: center;
 }
 
 @media screen and (width > 800px) {
