@@ -105,10 +105,12 @@ export default function VideoPage() {
 
   return (
     <>
-      <button type="button" onClick={handleBack} className="backButton">
-        <HistoryIcon size={18} />
-        Back
-      </button>
+      {currentUser && (
+        <button type="button" onClick={handleBack} className="backButton">
+          <HistoryIcon size={18} />
+          Back
+        </button>
+      )}
 
       {videoData.is_connected && currentUser === null ? (
         <h1 className="video-title">
