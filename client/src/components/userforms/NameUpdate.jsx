@@ -28,7 +28,9 @@ export default function NameUpdate({ user }) {
 
   const onSubmit = async (data) => {
     try {
-      await axios.put(`${expressURL}/api/users/${user.id}/name`, data);
+      await axios.put(`${expressURL}/api/users/${user.id}/name`, data, {
+        withCredentials: true,
+      });
       toast.success("Your user informations have been updated");
       reset();
     } catch (err) {

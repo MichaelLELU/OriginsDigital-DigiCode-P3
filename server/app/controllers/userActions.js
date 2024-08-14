@@ -25,19 +25,6 @@ const read = async (req, res, next) => {
   }
 };
 
-// Edit
-const edit = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const { firstname, lastname, email, password, role_id } = req.body;
-    await tables.user.update(firstname, lastname, email, password, role_id, id);
-
-    res.sendStatus(204);
-  } catch (error) {
-    next(error);
-  }
-};
-
 const updateUserName = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -83,4 +70,4 @@ const destroy = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, edit, updateUserName, add, destroy };
+module.exports = { browse, read, updateUserName, add, destroy };
