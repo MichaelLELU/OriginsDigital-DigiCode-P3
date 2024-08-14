@@ -23,11 +23,16 @@ const {
   destroy,
 } = require("../../../controllers/videoActions");
 
+const adminWall = require("../../../services/adminWall");
+
 // route to get a list of videos
 router.get("/", browse);
 
 // route to get a specific video by id
 router.get("/:id", read);
+
+// secure routes with adminWall
+router.use(adminWall);
 
 // route to add a new video
 router.post("/", add);
