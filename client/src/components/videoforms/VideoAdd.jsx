@@ -23,7 +23,9 @@ export default function VideoAdd() {
   const onSubmit = async (uploadData) => {
     try {
       await axios
-        .post(`${expressURL}/api/videos`, uploadData)
+        .post(`${expressURL}/api/videos`, uploadData, {
+          withCredentials: true,
+        })
         .then(() => reset());
       toast.success("Video added successfully!");
     } catch (err) {
