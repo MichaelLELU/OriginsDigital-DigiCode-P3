@@ -9,10 +9,8 @@
   gap: 3em;
   align-items: center;
   font-size: 0.8em;
-}
 
-@media screen and (width >= 800px) {
-  .resultCards {
+  @media screen and (width >= 800px) {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;

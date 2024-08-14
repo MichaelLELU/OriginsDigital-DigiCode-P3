@@ -6,14 +6,21 @@
   font-size: 0.7rem;
   margin-top: 0.2rem;
 }
+
 .signup-title {
   text-align: center;
   font-size: 1.4rem;
 }
+
 .msg-error {
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
+
+  @media screen and (width > 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .signup-form {
@@ -30,6 +37,11 @@
   button {
     margin: 0;
     margin-top: 2rem;
+  }
+
+  @media screen and (width > 800px) {
+    padding: 1rem 2rem;
+    height: 32rem;
   }
 }
 
@@ -50,6 +62,7 @@
   width: 7rem;
   height: 1.5rem;
 }
+
 .signup-input {
   border: none;
   border-radius: var(--input-radius);
@@ -78,16 +91,6 @@
 }
 
 @media screen and (width > 800px) {
-  .signup-form {
-    padding: 1rem 2rem;
-    height: 32rem;
-  }
-
-  .msg-error {
-    display: flex;
-    flex-direction: column;
-  }
-
   .names-oneline {
     display: flex;
     flex-direction: row;

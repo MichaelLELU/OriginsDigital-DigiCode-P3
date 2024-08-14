@@ -8,6 +8,11 @@
 .cardImage {
   width: 18.75rem;
 }
+.cardImage:hover {
+  @media screen and (width >= 800px) {
+    opacity: 0.6;
+  }
+}
 
 .cardImageContainer {
   position: relative;
@@ -30,10 +35,4 @@
 }
 .poster-icon-outline {
   z-index: 1;
-}
-
-@media screen and (width >= 800px) {
-  .cardImage:hover {
-    opacity: 0.6;
-  }
 }

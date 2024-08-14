@@ -22,6 +22,11 @@ div.logoContainer {
 
   .logo {
     max-height: 6rem;
+
+    @media screen and (width >= 800px) {
+      margin-top: 0;
+      max-height: 8rem;
+    }
   }
 }
 
@@ -121,11 +126,4 @@ div.logoContainer {
   max-width: 10ch;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@media screen and (width > 800px) {
-  .logo {
-    margin-top: 0;
-    max-height: 8rem;
-  }
 }

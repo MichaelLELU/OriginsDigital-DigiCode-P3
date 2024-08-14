@@ -7,6 +7,12 @@
 .admin-panel {
   display: flex;
   flex-direction: column;
+
+  @media screen and (width >= 800px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 
 .admin-title {
@@ -25,12 +31,4 @@
   margin-bottom: 1rem;
   padding-left: 3rem;
   padding-right: 4rem;
-}
-
-@media screen and (width >= 800px) {
-  .admin-panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
 }
