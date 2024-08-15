@@ -10,6 +10,12 @@
   justify-content: center;
   gap: 1.25em;
   margin-top: 2rem;
+
+  @media screen and (width >= 800px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
 }
 
 .filterButton {
@@ -24,24 +30,14 @@
   border: 2px solid var(--accent-color);
   border-radius: var(--medium-border-radius);
   padding: 0.25rem 0.3rem;
+
+  @media screen and (width >= 800px) {
+    min-width: 8.5rem;
+    min-height: 2.5rem;
+  }
 }
 
 .categories-mapped-name {
   color: var(--main-color-black);
   font-size: 1rem;
-}
-
-@media screen and (width >= 800px) {
-  .filterContainer {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 1;
-  }
-  .filterButton {
-    min-width: 8.5rem;
-    min-height: 2.5rem;
-  }
-  .filterContainer {
-    gap: 2.5rem;
-  }
 }

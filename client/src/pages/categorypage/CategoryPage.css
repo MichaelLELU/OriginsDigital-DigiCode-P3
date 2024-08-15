@@ -13,10 +13,8 @@
   align-items: center;
   font-size: 0.8em;
   margin-bottom: 2em;
-}
 
-@media screen and (width >= 800px) {
-  .categoryCards {
+  @media screen and (width >= 800px) {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
