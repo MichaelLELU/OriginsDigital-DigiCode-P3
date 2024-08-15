@@ -9,7 +9,7 @@ class UserRepository extends AbstractRepository {
   // Browse
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT u.firstname, u.lastname, u.email, u.password, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id`
+      `SELECT u.firstname, u.lastname, u.email, r.name AS role FROM ${this.table} AS u JOIN role AS r ON u.role_id=r.id`
     );
 
     return rows;
@@ -23,16 +23,6 @@ class UserRepository extends AbstractRepository {
     );
 
     return row[0];
-  }
-
-  // Edit
-  async update(firstname, lastname, email, password, role_id, id) {
-    const [result] = await this.database.query(
-      `UPDATE ${this.table} SET firstname=?, lastname=?, email=?, password=?, role_id=? WHERE id=?`,
-      [firstname, lastname, email, password, role_id, id]
-    );
-
-    return result;
   }
 
   async updateUserName(firstname, lastname, id) {

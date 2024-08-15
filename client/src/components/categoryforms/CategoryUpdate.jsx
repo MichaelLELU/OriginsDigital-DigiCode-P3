@@ -22,7 +22,9 @@ export default function CategoryUpdate() {
   const onSubmit = async (data) => {
     try {
       await axios
-        .put(`${expressURL}/api/categories/${data.id}`, data)
+        .put(`${expressURL}/api/categories/${data.id}`, data, {
+          withCredentials: true,
+        })
         .then(() => reset());
       toast.info("Category updated successfully!");
     } catch (err) {
