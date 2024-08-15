@@ -14,7 +14,7 @@ export default function SearchBar() {
     if (inputValue.length > 2) {
       navigate(`/result/${encodeURIComponent(inputValue)}`);
     }
-    if (inputValue.length <= 2 || !inputValue) {
+    if (!inputValue || inputValue.length <= 2) {
       toast.error("Please enter at least 3 characters");
     }
   };
