@@ -88,17 +88,20 @@ export default function NavBar({ user, setUser }) {
               </li>
             )}
             {user === null ? (
-              <li>
-                <Link to="login">
-                  <LogInIcon />
-                  {" Login"}
-                </Link>
-                {" or "}
-                <Link to="signup">
-                  <UserRoundPlusIcon />
-                  {" Signup"}
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link to="login">
+                    <LogInIcon />
+                    {" Login"}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="signup">
+                    <UserRoundPlusIcon />
+                    {" Signup"}
+                  </Link>
+                </li>
+              </>
             ) : (
               <li>
                 <button type="button" onClick={handleLogout} className="logout">
