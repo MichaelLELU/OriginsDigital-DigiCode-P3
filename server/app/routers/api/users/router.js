@@ -6,7 +6,7 @@ const router = express.Router();
 const {
   browse,
   read,
-  updateUserName,
+  editUserName,
   add,
   destroy,
 } = require("../../../controllers/userActions");
@@ -27,7 +27,7 @@ router.post("/register", userValidation, hashPassword, add);
 router.use(userWall);
 
 // route to update user name
-router.put("/:id/name", updateUserName);
+router.put("/:id/name", editUserName);
 
 // route to delete an existing user
 router.delete("/:id", destroy);

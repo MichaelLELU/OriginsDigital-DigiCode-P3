@@ -25,7 +25,7 @@ const read = async (req, res, next) => {
   }
 };
 
-const updateUserName = async (req, res, next) => {
+const editUserName = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { firstname, lastname } = req.body;
@@ -70,4 +70,4 @@ const destroy = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, updateUserName, add, destroy };
+module.exports = { browse, read, editUserName, add, destroy };
