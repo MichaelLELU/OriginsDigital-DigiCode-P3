@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 import "./UserPage.css";
 import NameUpdate from "../../components/userforms/NameUpdate";
-import UserDelete from "../../components/userforms/UserDelete";
 
 export default function UserPage() {
   const { currentUser } = useOutletContext();
@@ -36,10 +35,6 @@ export default function UserPage() {
       <section className="update-information">
         <h2>Update your personal informations</h2>
         <NameUpdate user={currentUser} />
-      </section>
-      <section className="update-information">
-        <h2>Delete your account</h2>
-        <UserDelete user={currentUser} />
       </section>
     </div>
   );
