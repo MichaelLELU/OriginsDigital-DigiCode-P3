@@ -10,9 +10,14 @@ const {
   destroy,
 } = require("../../../controllers/categoryActions");
 
+const adminWall = require("../../../services/adminWall");
+
 router.get("/", browse);
 
 router.get("/:name", read);
+
+// secure routes with adminWall
+router.use(adminWall);
 
 router.put("/:id", edit);
 

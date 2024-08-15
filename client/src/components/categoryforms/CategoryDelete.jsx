@@ -24,7 +24,13 @@ export default function CategoryDelete() {
   const onSubmit = async (data) => {
     try {
       await axios
-        .delete(`${expressURL}/api/categories/${data.id}`, data)
+        .delete(
+          `${expressURL}/api/categories/${data?.id}`,
+          {
+            withCredentials: true,
+          },
+          data
+        )
         .then(() => reset());
       toast.info("Category deleted successfully!");
     } catch (err) {

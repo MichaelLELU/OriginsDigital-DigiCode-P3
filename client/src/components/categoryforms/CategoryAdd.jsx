@@ -21,7 +21,9 @@ export default function CategoryAdd() {
   const onSubmit = async (data) => {
     try {
       await axios
-        .post(`${expressURL}/api/categories`, data)
+        .post(`${expressURL}/api/categories`, data, {
+          withCredentials: true,
+        })
         .then(() => reset());
       toast.success("Category added successfully!");
     } catch (err) {

@@ -21,7 +21,13 @@ export default function VideoDelete() {
   const onSubmit = async (data) => {
     try {
       await axios
-        .delete(`${expressURL}/api/videos/${data.id}`, data)
+        .delete(
+          `${expressURL}/api/videos/${data.id}`,
+          {
+            withCredentials: true,
+          },
+          data
+        )
         .then(() => reset());
       toast.info("Video deleted successfully!");
     } catch (err) {

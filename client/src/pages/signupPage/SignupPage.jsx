@@ -125,7 +125,7 @@ export default function LoginPage() {
           <p className="form-error">
             <span style={{ whiteSpace: "pre-wrap" }}>
               {
-                "This email is already present in the database, \nuse a different email."
+                "This email is already present in the database, \n use a different email."
               }
             </span>
           </p>
