@@ -12,7 +12,7 @@ import HeroSlider from "../../components/HeroSlider/HeroSlider";
 export default function AdminPage() {
   const currentUser = useLoaderData();
 
-  return currentUser.role !== "admin" || !currentUser ? (
+  return currentUser?.role !== "admin" || !currentUser ? (
     <Navigate to="/" />
   ) : (
     <>
@@ -36,11 +36,11 @@ export default function AdminPage() {
         </section>
       </div>
 
-      <hr style={{ margin: "3rem 0" }} />
+      <hr style={{ margin: "3rem 0", borderStyle: "dashed" }} />
 
       <div className="admin-panel-heroslider">
         <h2> Hero Slider</h2>
-        <HeroSlider />
+        <HeroSlider admin />
       </div>
     </>
   );

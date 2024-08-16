@@ -7,17 +7,19 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+import { Trash2Icon } from "lucide-react";
 
 import "./HeroSlider.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function HeroSlider({ numberOfSlides = null }) {
+export default function HeroSlider({ numberOfSlides = null, admin = false }) {
   const [videoData, setVideoData] = useState([]);
 
+  const express = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    const express = import.meta.env.VITE_API_URL;
     try {
       const fetchHerosliderVideos = async () => {
         const data = await axios
@@ -42,7 +44,7 @@ export default function HeroSlider({ numberOfSlides = null }) {
     } catch (err) {
       if (err) toast.error("Error when fetching data");
     }
-  }, []);
+  }, [express]);
 
   return (
     <Swiper
@@ -70,11 +72,33 @@ export default function HeroSlider({ numberOfSlides = null }) {
       className="heroSwiper"
       id="heroSwiper"
     >
-      {videoData.slice(0, 5).map((v) => (
+      {videoData.map((v) => (
         <SwiperSlide key={v.title} id="heroSlide">
           <NavLink to={`/video/${v.id}`}>
             <img id="imageHero" src={v.image} alt={v.title} />
           </NavLink>
+          {admin && (
+            <button type="button" aria-label="Remove from slider">
+              <Trash2Icon
+                className="trashIcon"
+                color="#2B2929"
+                fill="#1FD360"
+                onClick={() => {
+                  axios
+                    .delete(`${express}/api/heroslider/${v.id}`)
+                    .then((response) => {
+                      if (response.status === 204) {
+                        toast.success(
+                          "Video successfully removed from the heroslider"
+                        );
+                        videoData.splice(videoData.indexOf(v), 1);
+                        setVideoData([...videoData]);
+                      }
+                    });
+                }}
+              />
+            </button>
+          )}
         </SwiperSlide>
       ))}
     </Swiper>
@@ -83,4 +107,5 @@ export default function HeroSlider({ numberOfSlides = null }) {
 
 HeroSlider.propTypes = {
   numberOfSlides: PropTypes.number,
+  admin: PropTypes.bool,
 };
