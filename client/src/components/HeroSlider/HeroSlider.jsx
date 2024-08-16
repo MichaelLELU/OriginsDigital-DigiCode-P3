@@ -13,10 +13,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function HeroSlider({
-  numberOfSlides = null,
-  currentUser = null,
-}) {
+export default function HeroSlider({ numberOfSlides = null }) {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
@@ -45,7 +42,7 @@ export default function HeroSlider({
     } catch (err) {
       if (err) toast.error("Error when fetching data");
     }
-  }, [currentUser]);
+  }, []);
 
   return (
     <Swiper
@@ -85,12 +82,5 @@ export default function HeroSlider({
 }
 
 HeroSlider.propTypes = {
-  numberOfSlides: PropTypes.number.isRequired,
-  currentUser: PropTypes.shape({
-    firstname: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-  }),
+  numberOfSlides: PropTypes.number,
 };

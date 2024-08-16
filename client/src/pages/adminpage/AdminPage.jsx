@@ -35,6 +35,9 @@ export default function AdminPage() {
           </article>
         </section>
       </div>
+
+      <hr style={{ margin: "3rem 0" }} />
+
       <div className="admin-panel-heroslider">
         <h2> Hero Slider</h2>
         <HeroSlider />
