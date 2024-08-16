@@ -45,6 +45,12 @@
   }
 }
 
+.signup-form > label {
+  align-self: baseline;
+  position: relative;
+  left: 1rem;
+}
+
 .signup-subtitle {
   color: black;
   font-size: 1rem;
