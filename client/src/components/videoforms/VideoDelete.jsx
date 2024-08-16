@@ -51,7 +51,12 @@ export default function VideoDelete() {
     <section>
       <div className="header-panel">
         <h3> Delete a video </h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {videoDeleteShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (

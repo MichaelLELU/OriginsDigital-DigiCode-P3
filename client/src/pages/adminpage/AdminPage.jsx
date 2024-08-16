@@ -15,7 +15,7 @@ export default function AdminPage() {
     <Navigate to="/" />
   ) : (
     <>
-      <h1 className="title-admin-page"> Admin pannel</h1>
+      <h1 className="title-admin-page">Admin panel</h1>
       <div className="admin-panel">
         <section>
           <h2> Video panel </h2>

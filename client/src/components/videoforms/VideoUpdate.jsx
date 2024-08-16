@@ -40,7 +40,12 @@ export default function VideoUpdate() {
     <>
       <div className="header-panel">
         <h3> Update a video </h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {videoUpdateShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
