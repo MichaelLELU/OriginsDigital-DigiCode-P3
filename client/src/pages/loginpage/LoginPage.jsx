@@ -54,9 +54,7 @@ export default function LoginPage() {
       <div className="container-text">
         <p className="login-text">
           {"No account ? "}
-          <Link to="/signup">
-            <span>Create one now</span>
-          </Link>
+          <Link to="/signup">Create one now</Link>
         </p>
         <p className="login-text"> To gain access to more videos </p>
       </div>
