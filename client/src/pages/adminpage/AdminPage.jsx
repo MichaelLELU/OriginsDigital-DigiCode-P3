@@ -7,6 +7,7 @@ import CategoryDelete from "../../components/categoryforms/CategoryDelete";
 import "./AdminPage.css";
 import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
+import HeroSlider from "../../components/HeroSlider/HeroSlider";
 
 export default function AdminPage() {
   const currentUser = useLoaderData();
@@ -33,6 +34,10 @@ export default function AdminPage() {
             <CategoryDelete />
           </article>
         </section>
+      </div>
+      <div className="admin-panel-heroslider">
+        <h2> Hero Slider</h2>
+        <HeroSlider />
       </div>
     </>
   );
