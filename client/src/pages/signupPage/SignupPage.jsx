@@ -54,6 +54,8 @@ export default function SignupPage() {
               <input
                 type="text"
                 name="firstname"
+                id="firstname"
+                aria-label="firstname"
                 className="user-nameone-input"
                 {...register("firstname", {
                   required: "This field is required !",
@@ -81,6 +83,8 @@ export default function SignupPage() {
               <input
                 type="text"
                 name="lastname"
+                id="lastname"
+                aria-label="lastname"
                 className="user-nameone-input"
                 {...register("lastname", {
                   required: "This field is required !",
@@ -107,6 +111,8 @@ export default function SignupPage() {
         <input
           type="email"
           name="email"
+          id="email"
+          aria-label="email"
           className="signup-input"
           {...register("email", {
             required: "This field is required !",
@@ -137,6 +143,8 @@ export default function SignupPage() {
         <input
           type="email"
           name="confirmemail"
+          id="confirmemail"
+          aria-label="confirm email"
           className="signup-input"
           {...register("confirmemail", {
             required: "This field is required !",
@@ -162,6 +170,8 @@ export default function SignupPage() {
         <input
           type="password"
           name="password"
+          id="password"
+          aria-label="password"
           className="signup-input"
           {...register("password", {
             required: "This field is required !",
@@ -187,6 +197,8 @@ export default function SignupPage() {
         <input
           type="password"
           name="confirmpassword"
+          id="confirmpassword"
+          aria-label="confirm password"
           className="signup-input"
           {...register("confirmpassword", {
             required: "This field is required !",
