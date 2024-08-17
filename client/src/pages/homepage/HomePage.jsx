@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
 import { BookMarkedIcon, SparklesIcon, Dices } from "lucide-react";
 import HeroSlider from "../../components/HeroSlider/HeroSlider";
@@ -5,6 +6,7 @@ import SearchBar from "../../components/searchbar/SearchBar";
 import VideoList from "../../components/videolist/VideoList";
 
 import "./HomePage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function HomePage() {
   const videoData = useLoaderData();
@@ -12,6 +14,10 @@ export default function HomePage() {
 
   const newVideos = videoData[0];
   const randomVideos = videoData[1];
+
+  useEffect(() => {
+    setPageTitle("Home");
+  }, []);
 
   return (
     <>
