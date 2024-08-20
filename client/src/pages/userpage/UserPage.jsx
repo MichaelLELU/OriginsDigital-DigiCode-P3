@@ -7,6 +7,7 @@ import { HeartIcon } from "lucide-react";
 import "./UserPage.css";
 import VideoList from "../../components/videolist/VideoList";
 import NameUpdate from "../../components/userforms/NameUpdate";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function UserPage() {
   const currentUser = useLoaderData();
@@ -18,6 +19,10 @@ export default function UserPage() {
       setVideoData(videos.data);
     });
   }, [express, currentUser?.id]);
+
+  useEffect(() => {
+    setPageTitle("Profile");
+  });
 
   return currentUser === null ? (
     <Navigate to="/login" />

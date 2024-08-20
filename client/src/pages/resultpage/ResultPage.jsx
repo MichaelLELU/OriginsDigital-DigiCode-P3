@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import SearchBar from "../../components/searchbar/SearchBar";
 import VideoCard from "../../components/videocard/VideoCard";
 import "./ResultPage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function ResultPage() {
   const [result, setResult] = useState();
   const { q } = useParams();
 
   useEffect(() => {
+    setPageTitle(`'${q}'`);
+
     const express = import.meta.env.VITE_API_URL;
     const fetchVideo = async () => {
       const response = await fetch(`${express}/api/videos/q/${q}`);

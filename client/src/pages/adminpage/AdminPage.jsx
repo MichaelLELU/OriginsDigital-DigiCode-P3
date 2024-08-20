@@ -1,16 +1,22 @@
+import { useEffect } from "react";
 import { Navigate, useLoaderData } from "react-router-dom";
 import VideoAdd from "../../components/videoforms/VideoAdd";
 import VideoDelete from "../../components/videoforms/VideoDelete";
 import CategoryAdd from "../../components/categoryforms/CategoryAdd";
 import CategoryDelete from "../../components/categoryforms/CategoryDelete";
 
-import "./AdminPage.css";
 import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
 import HeroSlider from "../../components/HeroSlider/HeroSlider";
+import setPageTitle from "../../utils/setPageTitle";
+import "./AdminPage.css";
 
 export default function AdminPage() {
   const currentUser = useLoaderData();
+
+  useEffect(() => {
+    setPageTitle("Admin Panel");
+  });
 
   return currentUser?.role !== "admin" || !currentUser ? (
     <Navigate to="/" />

@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function Error404Page() {
+  useEffect(() => {
+    setPageTitle("404 Not Found");
+  });
+
   return (
     <>
       <h1
