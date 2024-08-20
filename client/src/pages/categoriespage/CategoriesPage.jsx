@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLoaderData, NavLink } from "react-router-dom";
-import { ArrowLeftIcon } from "lucide-react";
 import SearchBar from "../../components/searchbar/SearchBar";
 import Filter from "../../components/filter/Filter";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
