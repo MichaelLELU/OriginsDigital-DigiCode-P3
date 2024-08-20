@@ -1,6 +1,12 @@
 import { Scale, Cookie, PenLine, FolderClosed } from "lucide-react";
+import { useEffect } from "react";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function RgpdPage() {
+  useEffect(() => {
+    setPageTitle("RGPD");
+  });
+
   return (
     <>
       <h1> RGPD</h1>
