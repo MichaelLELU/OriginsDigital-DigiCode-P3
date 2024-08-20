@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 import axios from "axios";
 import "./LoginPage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ export default function SignupPage() {
       navigate("/history9");
     }
   }, [currentUser, navigate]);
+
+  useEffect(() => {
+    setPageTitle("Login");
+  });
 
   const {
     register,

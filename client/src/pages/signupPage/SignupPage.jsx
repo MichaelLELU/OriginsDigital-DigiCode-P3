@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./SignupPage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ export default function LoginPage() {
       toast.error("an error occured, please try again later");
     }
   };
+
+  useEffect(() => {
+    setPageTitle("Signup");
+  }, []);
 
   return (
     <>

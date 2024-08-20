@@ -17,6 +17,7 @@ import removeHerosliderVideo from "../../utils/removeHerosliderVideo";
 
 import "./VideoPage.css";
 import CategoriesList from "../../components/categorieslist/CategoriesList";
+import setPageTitle from "../../utils/setPageTitle";
 
 export default function VideoPage() {
   const loaderData = useLoaderData();
@@ -72,6 +73,10 @@ export default function VideoPage() {
       fetchHerosliderVideo();
     }
   }, [videoData.id, currentUser]);
+
+  useEffect(() => {
+    setPageTitle(videoData.title);
+  }, [videoData.title]);
 
   const toggleFavorite = () => {
     if (!isFavorite) {
