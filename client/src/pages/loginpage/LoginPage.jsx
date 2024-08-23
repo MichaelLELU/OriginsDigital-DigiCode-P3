@@ -8,7 +8,7 @@ import axios from "axios";
 import "./LoginPage.css";
 import setPageTitle from "../../utils/setPageTitle";
 
-export default function SignupPage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useOutletContext();
 
