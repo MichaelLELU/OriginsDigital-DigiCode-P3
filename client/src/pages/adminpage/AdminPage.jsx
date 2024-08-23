@@ -7,6 +7,7 @@ import CategoryDelete from "../../components/categoryforms/CategoryDelete";
 
 import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
+import HeroSlider from "../../components/HeroSlider/HeroSlider";
 import setPageTitle from "../../utils/setPageTitle";
 import "./AdminPage.css";
 
@@ -17,7 +18,7 @@ export default function AdminPage() {
     setPageTitle("Admin Panel");
   });
 
-  return currentUser.role !== "admin" || !currentUser ? (
+  return currentUser?.role !== "admin" || !currentUser ? (
     <Navigate to="/" />
   ) : (
     <>
@@ -39,6 +40,13 @@ export default function AdminPage() {
             <CategoryDelete />
           </article>
         </section>
+      </div>
+
+      <hr style={{ margin: "3rem 0", borderStyle: "dashed" }} />
+
+      <div className="admin-panel-heroslider">
+        <h2> Hero Slider</h2>
+        <HeroSlider admin />
       </div>
     </>
   );
