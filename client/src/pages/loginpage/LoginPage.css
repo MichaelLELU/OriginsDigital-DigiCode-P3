@@ -26,8 +26,8 @@
 .login-text {
   margin: 0;
 
-  span {
-    filter: grayscale(50%) invert(100%);
+  a {
+    filter: saturate(50%) invert(100%);
   }
 }
 
