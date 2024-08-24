@@ -13,10 +13,10 @@ const {
 router.get("/check/:userId/:videoId", checkFavorite);
 
 // add a video to favorites
-router.post("/:id", addFavorite);
+router.post("/:videoId", addFavorite);
 
 // remove a video from favorites
-router.delete("/:id", removeFavorite);
+router.delete("/:videoId", removeFavorite);
 
 // get all favorites
 router.get("/:userId", allFavorites);

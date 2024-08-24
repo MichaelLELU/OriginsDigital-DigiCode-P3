@@ -19,10 +19,10 @@ const checkFavorite = async (req, res, next) => {
 
 const addFavorite = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { videoId } = req.params;
     const { user_id } = req.body;
 
-    await tables.favorite.addFavorite(user_id, id);
+    await tables.favorite.addFavorite(user_id, videoId);
 
     res.sendStatus(201);
   } catch (err) {
@@ -32,10 +32,10 @@ const addFavorite = async (req, res, next) => {
 
 const removeFavorite = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { videoId } = req.params;
     const { user_id } = req.body;
 
-    await tables.favorite.removeFavorite(user_id, id);
+    await tables.favorite.removeFavorite(user_id, videoId);
 
     res.sendStatus(204);
   } catch (err) {
