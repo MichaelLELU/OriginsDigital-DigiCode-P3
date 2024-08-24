@@ -3,10 +3,9 @@ const tables = require("../../database/tables");
 
 const checkFavorite = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const { user_id } = req.body;
+    const { userId, videoId } = req.params;
 
-    const favorite = await tables.favorite.isVideoFavorite(user_id, id);
+    const favorite = await tables.favorite.isVideoFavorite(userId, videoId);
 
     if (favorite == null) {
       res.sendStatus(204);

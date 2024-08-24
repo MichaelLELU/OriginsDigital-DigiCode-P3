@@ -42,11 +42,8 @@ export default function VideoPage() {
     if (currentUser) {
       const fetchFavorite = async () => {
         try {
-          const response = await axios.post(
-            `${express}/api/favorites/check/${videoData.id}`,
-            {
-              user_id: currentUser.id,
-            }
+          const response = await axios.get(
+            `${express}/api/favorites/check/${currentUser.id}/${videoData.id}`
           );
           if (response.status === 200) {
             setIsFavorite(true);
