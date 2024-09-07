@@ -11,11 +11,12 @@ export default function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.length > 2) {
+    const minCharacters = 3;
+
+    if (inputValue?.length >= minCharacters) {
       navigate(`/result/${encodeURIComponent(inputValue)}`);
-    }
-    if (!inputValue || inputValue.length <= 2) {
-      toast.error("Please enter at least 3 characters");
+    } else if (!inputValue || inputValue.length < minCharacters) {
+      toast.error(`Please enter at least ${minCharacters} characters`);
     }
   };
 
@@ -24,7 +25,7 @@ export default function SearchBar() {
       <input
         id="search"
         type="search"
-        placeholder="Search"
+        placeholder="Search something..."
         onChange={(event) => setInputValue(event.target.value)}
         aria-label="search input"
       />
@@ -33,7 +34,7 @@ export default function SearchBar() {
         type="submit"
         style={{ display: "flex", alignItems: "center" }}
       >
-        <SearchIcon aria-label="Search" />
+        <SearchIcon aria-label="Search" color="#2B2929" fill="#D9D9D9" />
       </button>
     </form>
   );
