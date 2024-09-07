@@ -23,7 +23,7 @@ export default function SearchBar() {
     <form className="searchForm" onSubmit={handleSubmit}>
       <input
         id="search"
-        type="text"
+        type="search"
         placeholder="Search"
         onChange={(event) => setInputValue(event.target.value)}
       />
