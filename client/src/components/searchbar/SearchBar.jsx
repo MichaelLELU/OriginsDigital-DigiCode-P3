@@ -26,6 +26,7 @@ export default function SearchBar() {
         type="search"
         placeholder="Search"
         onChange={(event) => setInputValue(event.target.value)}
+        aria-label="search input"
       />
       <button
         className="searchButton"

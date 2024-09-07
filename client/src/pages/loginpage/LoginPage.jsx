@@ -8,7 +8,7 @@ import axios from "axios";
 import "./LoginPage.css";
 import setPageTitle from "../../utils/setPageTitle";
 
-export default function SignupPage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useOutletContext();
 
@@ -58,57 +58,63 @@ export default function SignupPage() {
       <h1 className="login-title">Login with you email</h1>
       <div className="container-text">
         <p className="login-text">
-          {"Don't have an account ? "}
-          <Link to="/signup" id="button-here">
-            Click here
-          </Link>
+          {"No account ? "}
+          <Link to="/signup">Create one now</Link>
         </p>
         <p className="login-text"> To gain access to more videos </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="email-login">
-          <label htmlFor="email">Email </label>
-          <input
-            type="text"
-            name="email"
-            className="input-login"
-            {...register("email", {
-              required: "This filed is required !",
-              pattern: {
-                value: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
-                message: "Invalid email format",
-              },
-              maxLength: {
-                value: 120,
-                message: "You can't have more than 120 characters",
-              },
-            })}
-          />
+          <label htmlFor="email">
+            <span>{"Email\n"}</span>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              aria-label="email"
+              className="input-login"
+              {...register("email", {
+                required: "This filed is required !",
+                pattern: {
+                  value: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
+                  message: "Invalid email format",
+                },
+                maxLength: {
+                  value: 120,
+                  message: "You can't have more than 120 characters",
+                },
+              })}
+            />
+          </label>
           {errors.email && (
             <p className="form-error-login"> {errors.email.message}</p>
           )}
         </div>
 
         <div className="password-login">
-          <label htmlFor="password">Password </label>
-          <input
-            type="password"
-            name="password"
-            className="input-login"
-            {...register("password", {
-              required: "This field is required !",
-              pattern: {
-                value:
-                  /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,64}$/,
-                message:
-                  "You need at least 12 characters, including one uppercase, one number and a special character",
-              },
-              maxLength: {
-                value: 64,
-                message: "You can't put more that 64 characters",
-              },
-            })}
-          />
+          <label htmlFor="password">
+            <span>{"Password\n"}</span>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              aria-label="password"
+              className="input-login"
+              {...register("password", {
+                required: "This field is required !",
+                pattern: {
+                  value:
+                    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,64}$/,
+                  message:
+                    "You need at least 12 characters, including one uppercase, one number and a special character",
+                },
+                maxLength: {
+                  value: 64,
+                  message: "You can't put more that 64 characters",
+                },
+              })}
+            />
+          </label>
           {errors.password && (
             <p className="form-error-login">{errors.password.message}</p>
           )}

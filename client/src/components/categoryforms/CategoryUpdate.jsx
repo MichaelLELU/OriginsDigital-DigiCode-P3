@@ -48,7 +48,12 @@ export default function CategoryUpdate() {
     <section>
       <div className="header-panel">
         <h3>Rename a category</h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {categoryUpdateShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
