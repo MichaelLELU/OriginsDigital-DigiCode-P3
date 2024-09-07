@@ -19,6 +19,10 @@
   }
 }
 
+.login-title {
+  margin-top: 0;
+}
+
 .login-text {
   margin: 0;
 
