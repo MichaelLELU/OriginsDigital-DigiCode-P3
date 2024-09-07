@@ -40,6 +40,10 @@
   .video-description {
     margin-top: 2rem;
     width: 75%;
+
+    p.video-metadata + p {
+      max-width: 100%;
+    }
   }
 
   .favorite-button {
