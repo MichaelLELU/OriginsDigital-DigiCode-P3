@@ -6,9 +6,9 @@
   margin-top: 2rem;
   background-color: var(--main-color-gray);
   color: black;
-  height: 28rem;
   width: 20rem;
   border-radius: var(--input-radius);
+  padding: 2rem 0;
 
   @media screen and (width > 800px) {
     width: 25rem;
@@ -19,15 +19,11 @@
   }
 }
 
-.login-title {
-  padding-top: 2rem;
-}
-
 .login-text {
   margin: 0;
 
   a {
-    filter: saturate(50%) invert(100%);
+    filter: saturate(80%) invert(100%);
   }
 }
 

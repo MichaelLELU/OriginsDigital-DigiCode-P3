@@ -29,7 +29,6 @@
   flex-direction: column;
   align-items: center;
   width: 17rem;
-  height: 35rem;
   background-color: var(--main-color-gray);
   border-radius: var(--input-radius);
   padding: 1rem;
@@ -41,7 +40,6 @@
 
   @media screen and (width > 800px) {
     padding: 1rem 2rem;
-    height: 32rem;
   }
 }
 
@@ -86,30 +84,42 @@
   border: none;
 }
 
-.user-firstname {
+.names-oneline {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
+.user-firstname,
 .user-lastname {
   display: flex;
   flex-direction: column;
+
+  @media screen and (width < 800px) {
+    align-items: center;
+
+    input {
+      width: 15rem;
+    }
+
+    label {
+      align-self: baseline;
+      position: relative;
+      left: 1rem;
+    }
+  }
 }
 
-@media screen and (width > 800px) {
+@media screen and (width >= 800px) {
   .names-oneline {
-    display: flex;
     flex-direction: row;
+    gap: 0.7rem;
+    justify-content: center;
 
-    .user-firstname {
-      display: block;
-      * {
-        margin: 0 auto;
-      }
-    }
+    .user-firstname,
     .user-lastname {
       display: block;
-      padding-left: 0.7rem;
+
       * {
         margin: 0 auto;
       }
