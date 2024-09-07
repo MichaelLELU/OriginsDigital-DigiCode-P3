@@ -61,6 +61,10 @@ button[type="submit"] {
   font-family: "Exo";
 }
 
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: var(--red);
+}
+
 .form-error {
   margin: 0;
   color: var(--red);
