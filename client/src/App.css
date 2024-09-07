@@ -52,6 +52,10 @@ p {
   }
 }
 
+button[type="submit"] {
+  font-family: "Exo";
+}
+
 /* https://github.com/fkhadra/react-toastify/issues/307#issuecomment-456821982 */
 .Toastify__toast-body {
   font-family: "Exo";
