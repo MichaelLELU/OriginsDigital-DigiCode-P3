@@ -9,9 +9,10 @@
   max-height: var(--navbar-size);
   padding: calc(var(--nav-vertical-padding) / 2) var(--nav-horizontal-padding);
 
-  svg {
-    position: relative;
-    top: 0.1875rem;
+  a {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
   }
 }
 
