@@ -61,6 +61,13 @@ button[type="submit"] {
   font-family: "Exo";
 }
 
+.form-error {
+  margin: 0;
+  color: var(--red);
+  font-size: 0.725rem;
+  max-width: 7.25rem;
+}
+
 /** Style commun aux liens de navigation */
 a {
   text-decoration: none;

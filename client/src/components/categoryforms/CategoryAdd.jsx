@@ -65,9 +65,7 @@ export default function CategoryAdd() {
                 },
               })}
             />
-            {errors.name && (
-              <p className="form-error-login">{errors.name.message}</p>
-            )}
+            {errors.name && <p className="form-error">{errors.name.message}</p>}
           </div>
 
           <button type="submit" className="button-form-panel">

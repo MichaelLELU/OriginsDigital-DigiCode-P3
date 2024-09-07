@@ -45,14 +45,6 @@
   }
 }
 
-.form-error-login {
-  margin: 0;
-  color: var(--red);
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
-  max-width: 14rem;
-}
-
 .login-button {
   background-color: var(--accent-color);
   width: 7rem;
