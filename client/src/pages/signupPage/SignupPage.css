@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   width: 17rem;
-  background-color: var(--main-color-gray);
+  background-color: var(--secondary-color);
   border-radius: var(--input-radius);
   padding: 1rem;
 

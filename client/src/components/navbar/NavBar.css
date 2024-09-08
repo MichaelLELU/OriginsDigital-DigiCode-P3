@@ -40,7 +40,7 @@
 
   .burger-menu span {
     display: block;
-    background-color: var(--main-color-gray);
+    background-color: var(--secondary-color);
     position: relative;
     top: 0;
     width: 2.5rem;
@@ -69,8 +69,8 @@
   position: absolute;
   top: calc(var(--nav-menu-size) + var(--nav-vertical-padding) + 0.5rem);
   left: var(--nav-horizontal-padding);
-  background-color: var(--main-color-black);
-  color: var(--main-color-gray);
+  background-color: var(--main-color);
+  color: var(--secondary-color);
   border-radius: var(--medium-border-radius);
   padding: 1em;
   line-height: 2em;
@@ -99,7 +99,7 @@
   font-size: 1em;
   border: none;
   background-color: transparent;
-  color: var(--main-color-gray);
+  color: var(--secondary-color);
   padding: 0;
 }
 

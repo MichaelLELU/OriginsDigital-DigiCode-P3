@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: var(--main-color-black);
-  color: var(--main-color-gray);
+  background-color: var(--main-color);
+  color: var(--secondary-color);
   font-family: "Exo";
   line-height: 1.5rem;
   margin: 0;

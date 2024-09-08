@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  background-color: var(--main-color-gray);
+  background-color: var(--secondary-color);
   color: black;
   width: 20rem;
   border-radius: var(--input-radius);
