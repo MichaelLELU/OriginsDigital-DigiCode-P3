@@ -79,6 +79,12 @@ button[type="submit"] {
   --swiper-pagination-bottom: 0;
 }
 
+#heroSwiper {
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    --swiper-pagination-bottom: 1rem;
+  }
+}
+
 /** Style commun aux liens de navigation */
 a {
   text-decoration: none;
