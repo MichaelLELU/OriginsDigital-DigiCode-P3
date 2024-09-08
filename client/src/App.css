@@ -56,6 +56,7 @@ button[type="submit"] {
   font-family: "Exo";
 }
 
+/** React Toastify */
 /* https://github.com/fkhadra/react-toastify/issues/307#issuecomment-456821982 */
 .Toastify__toast-body {
   font-family: "Exo";
@@ -65,11 +66,17 @@ button[type="submit"] {
   background-color: var(--red);
 }
 
+/** Erreurs de formulaires (React Hook Form) */
 .form-error {
   margin: 0;
   color: var(--red);
   font-size: 0.725rem;
   max-width: 7.25rem;
+}
+
+/** Swiper pagination */
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  --swiper-pagination-bottom: 0;
 }
 
 /** Style commun aux liens de navigation */
