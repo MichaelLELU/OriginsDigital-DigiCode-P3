@@ -34,7 +34,7 @@ function App() {
         <main>
           <h1 className="logoContainer">
             <Link to="/">
-              <img src={logo} alt="home" />
+              <img loading="lazy" src={logo} alt="home" />
             </Link>
           </h1>
           <Outlet context={{ currentUser, setCurrentUser }} />
