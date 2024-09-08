@@ -5,10 +5,6 @@
   --accent-color: #1fd360;
   --red: #880808;
 
-  /* border radius */
-  --input-radius: 5px;
-  --medium-border-radius: 6px;
-
   /* navbar */
   --nav-horizontal-padding: 2rem;
   --nav-vertical-padding: 1rem;
@@ -17,4 +13,8 @@
 
   /* footer */
   --footer-height: 6rem;
+
+  /* border radius */
+  --input-radius: 5px;
+  --medium-border-radius: 6px;
 }
