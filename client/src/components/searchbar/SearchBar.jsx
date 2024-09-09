@@ -27,14 +27,10 @@ export default function SearchBar() {
         type="search"
         placeholder="Search something..."
         onChange={(event) => setInputValue(event.target.value)}
-        aria-label="search input"
+        aria-label="Search query"
       />
-      <button
-        className="searchButton"
-        type="submit"
-        style={{ display: "flex", alignItems: "center" }}
-      >
-        <SearchIcon aria-label="Search" color="#2B2929" fill="#D9D9D9" />
+      <button className="searchButton" type="submit">
+        <SearchIcon aria-label="Search videos" color="#2B2929" fill="#D9D9D9" />
       </button>
     </form>
   );

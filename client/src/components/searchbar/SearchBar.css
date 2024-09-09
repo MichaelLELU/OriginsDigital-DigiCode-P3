@@ -23,7 +23,8 @@
 }
 
 .searchButton {
-  font-weight: bold;
+  display: flex;
+  align-items: center;
   width: calc(var(--searchbar-size) + 0.25rem);
   height: calc(var(--searchbar-size) + 0.25rem);
   background-color: var(--accent-color);
