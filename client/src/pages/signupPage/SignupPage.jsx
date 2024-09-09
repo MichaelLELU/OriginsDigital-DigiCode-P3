@@ -7,7 +7,7 @@ import axios from "axios";
 import "./SignupPage.css";
 import setPageTitle from "../../utils/setPageTitle";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const navigate = useNavigate();
 
   const {
