@@ -1,7 +1,19 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { UserRoundCheck } from "lucide-react";
+import {
+  UserRoundCheckIcon,
+  UserRoundCogIcon,
+  UserRoundPlusIcon,
+  LibraryIcon,
+  HouseIcon,
+  LogInIcon,
+  LogOutIcon,
+} from "lucide-react";
+import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 import userLogout from "../../utils/logout";
 import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
@@ -9,69 +21,92 @@ import "./NavBar.css";
 export default function NavBar({ user, setUser }) {
   const navigate = useNavigate();
 
-  const toggleLogout = () => {
+  const handleLogout = () => {
     userLogout()
       .then(() => setUser(null))
       .then(() => navigate("/"));
-    toast.info("you are logged out!");
+    toast.info("You are logged out!");
   };
+
+  const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <>
       <nav className="navbar-container">
-        <button
-          className="menu-button"
-          type="button"
-          popovertarget="navlinks"
-          popovertargetaction="toggle"
-        >
-          Menu
-        </button>
-
-        {user !== null ? (
-          <div>
-            {user && user.role === "user" && (
-              <Link to="/user">
-                {" "}
-                <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
-              </Link>
-            )}
-
-            {user && user.role === "admin" && (
-              <Link to="/history9">
-                {" "}
-                <UserRoundCheck size={34} color="#1fd360" strokeWidth={2} />
-              </Link>
-            )}
-          </div>
+        {isMobile ? (
+          <button
+            className="menu-button"
+            type="button"
+            popovertarget="navlinks"
+            popovertargetaction="toggle"
+            onClick={toggleMenu}
+          >
+            <div
+              aria-label="menu"
+              className={`burger-menu ${isMenuOpen ? "open" : ""}`}
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </button>
         ) : null}
 
-        <div id="navlinks" popover="auto">
+        <div
+          {...(isMobile
+            ? { id: "navlinks", popover: "manual" }
+            : { id: "navlinks-desktop" })}
+        >
           <ul>
             <li>
-              <Link to="/">HOME</Link>
+              <Link to="/">
+                <HouseIcon />
+                {" HOME"}
+              </Link>
             </li>
             <li>
-              <Link to="/categories">Categories</Link>
+              <Link to="/categories">
+                <LibraryIcon />
+                {" Categories"}
+              </Link>
             </li>
             {user && user.role === "admin" && (
               <li>
-                <Link to="/history9">Admin</Link>
+                <Link to="/history9">
+                  <UserRoundCogIcon /> Admin
+                </Link>
               </li>
             )}
             {user && user.role === "user" && (
               <li>
-                <Link to="/user">Profile</Link>
+                <Link to="/user">
+                  <UserRoundCheckIcon /> Profile
+                </Link>
               </li>
             )}
             {user === null ? (
-              <li>
-                <Link to="login">Login</Link> / <Link to="signup">Signup</Link>
-              </li>
+              <>
+                <li>
+                  <Link to="login">
+                    <LogInIcon />
+                    {" Login"}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="signup">
+                    <UserRoundPlusIcon />
+                    {" Signup"}
+                  </Link>
+                </li>
+              </>
             ) : (
               <li>
-                <button type="button" onClick={toggleLogout} className="logout">
-                  Logout
+                <button type="button" onClick={handleLogout} className="logout">
+                  <LogOutIcon />
+                  {" Logout"}
                 </button>
               </li>
             )}
@@ -94,5 +129,5 @@ NavBar.propTypes = {
     lastname: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };

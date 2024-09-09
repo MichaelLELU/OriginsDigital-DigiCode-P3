@@ -1,7 +1,7 @@
 @import url("./variables.css");
 @font-face {
   font-family: Exo;
-  src: url("./assets/fonts/Exo-VariableFont_wght.ttf");
+  src: url("./assets/fonts/Exo2-VariableFont_wght.ttf");
 }
 
 body {
@@ -11,15 +11,16 @@ body {
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
-}
-@media screen and (width >= 760px) {
-  body {
+
+  @media screen and (width >= 800px) {
     font-size: 1.25rem;
   }
 }
 
 .app-container {
   position: relative;
+  min-height: calc(100vh - var(--footer-height));
+  padding-bottom: var(--footer-height);
 }
 
 main {
@@ -35,16 +36,18 @@ p {
   max-width: 80ch;
 }
 
+/* https://github.com/fkhadra/react-toastify/issues/307#issuecomment-456821982 */
+.Toastify__toast-body {
+  font-family: "Exo";
+}
+
 /** Style commun aux liens de navigation */
 a {
   text-decoration: none;
   color: var(--accent-color);
 }
-a:visited {
-  color: var(--main-color-gray);
-}
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline dotted;
 }
 
 /** Style commun aux boutons de navigation */

@@ -44,7 +44,9 @@ const checkAuth = async (req, res) => {
   const token = req.cookies?.auth_token;
 
   if (!token) {
-    return res.status(403).json(null);
+    return res.status(200).json({
+      user: null,
+    });
   }
 
   try {

@@ -1,4 +1,3 @@
--- SQLBook: Code
 -- Catégorie
 CREATE TABLE category (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -34,20 +33,23 @@ CREATE TABLE user (
     FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
-CREATE TABLE payment (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    date DATE NOT NULL,
-    type VARCHAR(40) NOT NULL,
+-- Favoris (utilisateur)
+CREATE TABLE favorite (
     user_id INT UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    video_id INT UNSIGNED,
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
+    FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
 );
 
-CREATE TABLE privilege (
+-- Favoris (admin) -> heroslider
+CREATE TABLE heroslider (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     video_id INT UNSIGNED,
-    user_id INT UNSIGNED,
-    FOREIGN KEY (video_id) REFERENCES video (id),
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
 );
 
 -- Création de roles
 INSERT INTO role (name) VALUES ('user'), ('admin');
+
+-- Création de catégories par défaut
+INSERT INTO category (name) VALUES ('Animals'), ('Sports'), ('Music'), ('Education'), ('Entertainment');

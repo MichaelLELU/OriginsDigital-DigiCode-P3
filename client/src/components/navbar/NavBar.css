@@ -5,26 +5,77 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  min-height: 3rem;
+  min-height: calc(var(--navbar-size) - 1rem);
+  max-height: var(--navbar-size);
   padding: calc(var(--nav-vertical-padding) / 2) var(--nav-horizontal-padding);
+
+  svg {
+    position: relative;
+    top: 0.1875rem;
+  }
 }
 
-.logo {
+div.logoContainer {
+  display: flex;
+  justify-content: center;
   margin-top: 2em;
-  max-height: 6rem;
+
+  .logo {
+    max-height: 6rem;
+
+    @media screen and (width >= 800px) {
+      margin-top: 0;
+      max-height: 8rem;
+    }
+  }
 }
 
 .menu-button {
-  background-image: url("../../assets/images/menu.svg");
-  object-fit: contain;
-  color: transparent;
+  display: flex;
+  align-items: center;
   border: none;
   background-color: transparent;
   max-width: var(--nav-menu-size);
   max-height: var(--nav-menu-size);
-  min-height: var(--nav-menu-size);
+  min-height: calc(var(--nav-menu-size) - 1rem);
   padding: 0;
   cursor: pointer;
+
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  .burger-menu span {
+    display: block;
+    background-color: var(--main-color-gray);
+    position: relative;
+    top: 0;
+    width: 2.5rem;
+    height: 4px;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+  }
+
+  .burger-menu.open span:first-of-type {
+    transform: rotate(45deg);
+    top: 0.6875rem;
+  }
+
+  .burger-menu.open span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.open span:last-of-type {
+    transform: rotate(-45deg);
+    top: -0.6875rem;
+  }
 }
 
 #navlinks {
@@ -41,6 +92,19 @@
     list-style-type: none;
     margin: 0;
     padding: 0.25rem;
+  }
+}
+
+#navlinks-desktop {
+  margin: 0;
+  width: 100%;
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-evenly;
   }
 }
 
@@ -62,16 +126,4 @@
   max-width: 10ch;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.logoContainer {
-  display: flex;
-  justify-content: center;
-}
-
-@media screen and (width > 800px) {
-  .logo {
-    margin-top: 0;
-    max-height: 8rem;
-  }
 }

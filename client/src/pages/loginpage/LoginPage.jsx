@@ -6,8 +6,9 @@ import { toast } from "react-toastify";
 
 import axios from "axios";
 import "./LoginPage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
-export default function SignupPage() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useOutletContext();
 
@@ -19,6 +20,10 @@ export default function SignupPage() {
       navigate("/history9");
     }
   }, [currentUser, navigate]);
+
+  useEffect(() => {
+    setPageTitle("Login");
+  });
 
   const {
     register,
@@ -39,11 +44,9 @@ export default function SignupPage() {
         })
         .then((response) => {
           setCurrentUser(response.data.user);
-          toast.success("you are logged in!");
+          toast.success("You are logged in!");
         })
         .then(() => reset());
-
-      console.warn(currentUser);
     } catch (error) {
       setResponseStatus(error.response.status);
       toast.error("An error occured, please try again");

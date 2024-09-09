@@ -15,7 +15,9 @@ export default function VideoUpdate() {
 
   const onSubmit = async (data) => {
     try {
-      axios.put(`${expressURL}/api/videos/${data.id}`, data);
+      axios.put(`${expressURL}/api/videos/${data.id}`, data, {
+        withCredentials: true,
+      });
       toast.success("Video access updated successfully ! ");
     } catch (error) {
       toast.error("An error occured, please try again later");

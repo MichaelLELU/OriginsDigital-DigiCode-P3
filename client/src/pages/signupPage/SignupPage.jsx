@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./SignupPage.css";
+import setPageTitle from "../../utils/setPageTitle";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const navigate = useNavigate();
 
   const {
@@ -36,6 +37,10 @@ export default function LoginPage() {
       toast.error("an error occured, please try again later");
     }
   };
+
+  useEffect(() => {
+    setPageTitle("Signup");
+  }, []);
 
   return (
     <>
@@ -125,7 +130,7 @@ export default function LoginPage() {
           <p className="form-error">
             <span style={{ whiteSpace: "pre-wrap" }}>
               {
-                "This email is already present in the database, \nuse a different email."
+                "This email is already present in the database, \n use a different email."
               }
             </span>
           </p>

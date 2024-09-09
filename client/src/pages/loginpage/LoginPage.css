@@ -9,7 +9,12 @@
   height: 28rem;
   width: 20rem;
   border-radius: var(--input-radius);
+
+  @media screen and (width > 800px) {
+    width: 25rem;
+  }
 }
+
 .login-title {
   padding-top: 2rem;
 }
@@ -17,6 +22,7 @@
 .login-text {
   margin: 0;
 }
+
 .container-text {
   margin-bottom: 2rem;
 }
@@ -39,6 +45,7 @@
     border: none;
   }
 }
+
 .form-error-login {
   margin: 0;
   color: var(--red);
@@ -54,10 +61,4 @@
   border-radius: 1.25rem;
   border: none;
   margin-left: 3rem;
-}
-
-@media screen and (width > 800px) {
-  .login-form {
-    width: 25rem;
-  }
 }

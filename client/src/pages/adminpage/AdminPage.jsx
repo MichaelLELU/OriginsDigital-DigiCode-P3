@@ -1,28 +1,26 @@
-import { Navigate, useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
-
+import { Navigate, useLoaderData } from "react-router-dom";
 import VideoAdd from "../../components/videoforms/VideoAdd";
 import VideoDelete from "../../components/videoforms/VideoDelete";
 import CategoryAdd from "../../components/categoryforms/CategoryAdd";
 import CategoryDelete from "../../components/categoryforms/CategoryDelete";
 
-import "./AdminPage.css";
 import VideoUpdate from "../../components/videoforms/VideoUpdate";
 import CategoryUpdate from "../../components/categoryforms/CategoryUpdate";
+import HeroSlider from "../../components/HeroSlider/HeroSlider";
+import setPageTitle from "../../utils/setPageTitle";
+import "./AdminPage.css";
 
 export default function AdminPage() {
-  const { currentUser } = useOutletContext();
+  const currentUser = useLoaderData();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentUser.role !== "admin") {
-        <Navigate to="/" />;
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [currentUser]);
+    setPageTitle("Admin Panel");
+  });
 
-  return (
+  return currentUser?.role !== "admin" || !currentUser ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <h1 className="title-admin-page"> Admin pannel</h1>
       <div className="admin-panel">
@@ -42,6 +40,13 @@ export default function AdminPage() {
             <CategoryDelete />
           </article>
         </section>
+      </div>
+
+      <hr style={{ margin: "3rem 0", borderStyle: "dashed" }} />
+
+      <div className="admin-panel-heroslider">
+        <h2> Hero Slider</h2>
+        <HeroSlider admin />
       </div>
     </>
   );

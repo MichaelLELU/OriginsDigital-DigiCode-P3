@@ -9,12 +9,12 @@ export default function Filter({ category }) {
       <div className="filterContainer">
         {category.map((c) => (
           <Link
-            to={`/categories/${c.name.replaceAll(" ", "-")}`}
+            to={`/categories/${c.name}`}
             className="filterButton"
             type="button"
-            key={c.name}
+            key={c.id}
           >
-            <span className="categories-mapped-name">{`${c.name.charAt(0).toUpperCase()}${c.name.slice(1)}`}</span>
+            <span className="categories-mapped-name">{c.name}</span>
           </Link>
         ))}
       </div>

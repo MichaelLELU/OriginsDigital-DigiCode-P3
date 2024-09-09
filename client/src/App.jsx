@@ -16,14 +16,26 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      <NavBar user={currentUser} setUser={setCurrentUser} />
-      <main>
-        <ToastContainer role="alert" theme="colored" />
-        <Outlet context={{ currentUser, setCurrentUser }} />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <ToastContainer
+        role="alert"
+        theme="colored"
+        autoClose={3500}
+        limit={2}
+        hideProgressBar
+        closeOnClick
+        draggable={false}
+        pauseOnHover={false}
+        transition:Slide
+      />
+      <div className="app-container">
+        <NavBar user={currentUser} setUser={setCurrentUser} />
+        <main>
+          <Outlet context={{ currentUser, setCurrentUser }} />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
 

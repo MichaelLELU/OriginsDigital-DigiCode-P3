@@ -1,27 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link, useLoaderData } from "react-router-dom";
 import { ArrowLeftIcon } from "lucide-react";
 import VideoCard from "../../components/videocard/VideoCard";
 import Filter from "../../components/filter/Filter";
 
+import setPageTitle from "../../utils/setPageTitle";
 import "./CategoryPage.css";
 
 export default function CategoryPage() {
-  const categoriesData = useLoaderData();
-  const [result, setResult] = useState();
-  const categoryFind = useParams();
+  const currentCategory = useParams();
+  const LoaderData = useLoaderData();
+  const thisCategoryData = LoaderData[0];
+  const categoriesData = LoaderData[1];
+
+  const categoryName = currentCategory.name.replaceAll("-", " ");
 
   useEffect(() => {
-    const express = import.meta.env.VITE_API_URL;
-    const fetchCategoryVideo = async () => {
-      const response = await fetch(
-        `${express}/api/categories/${categoryFind.name.replaceAll("-", " ")}`
-      );
-      const data = await response.json();
-      setResult(data);
-    };
-    fetchCategoryVideo();
-  }, [categoryFind]);
+    setPageTitle(categoryName);
+  });
 
   return (
     <>
@@ -31,15 +27,21 @@ export default function CategoryPage() {
           Categories
         </button>
       </Link>
-      <h1 className="cTitle">{categoryFind.name.replaceAll("-", " ")}</h1>
+      <h1 className="cTitle">{categoryName}</h1>
       <div className="categoryCards">
-        {result && result[0].id !== null ? (
-          result.map((v) => <VideoCard video={v} key={v.id} />)
+        {thisCategoryData && thisCategoryData[0].id !== null ? (
+          thisCategoryData.map((v) => <VideoCard video={v} key={v.id} />)
         ) : (
           <h2>There are no videos associated with this category</h2>
         )}
       </div>
+
       <Filter category={categoriesData} />
+      <style>
+        {
+          "div.filter-wrapper { display: flex; align-items: center; flex-direction: column; }"
+        }
+      </style>
     </>
   );
 }

@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { CircleChevronRight, CircleChevronDown } from "lucide-react";
 
 export default function CategoryAdd() {
-  const [setCategoryData] = useState();
   const expressURL = import.meta.env.VITE_API_URL;
   const [categoryAddShow, setCategoryAddShow] = useState(false);
 
@@ -21,28 +20,16 @@ export default function CategoryAdd() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post(`${expressURL}/api/categories`, data);
+      await axios
+        .post(`${expressURL}/api/categories`, data, {
+          withCredentials: true,
+        })
+        .then(() => reset());
       toast.success("Category added successfully!");
     } catch (err) {
       if (err) toast.error("Something went wrong while adding the category");
     }
   };
-
-  useEffect(() => {
-    const express = import.meta.env.VITE_API_URL;
-
-    try {
-      axios
-        .get(`${express}/api/categories`)
-        .then((response) => {
-          const { data } = response;
-          setCategoryData(data);
-        })
-        .then(() => reset());
-    } catch (err) {
-      if (err) toast.error("Couldn't retrieve the categories");
-    }
-  }, [setCategoryData, reset]);
 
   const requiredFieldError = "This field is required!";
 

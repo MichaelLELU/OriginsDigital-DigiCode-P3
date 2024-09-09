@@ -4,15 +4,13 @@
 
 #newinSwiper {
   margin-top: 2.5rem;
+
+  @media screen and (width >= 800px) {
+    margin-bottom: 2rem;
+  }
 }
 
 #newinSlide.swiper-slide {
   display: flex;
   justify-content: center;
-}
-
-@media screen and (width >= 800px) {
-  #newinSwiper {
-    margin-bottom: 2rem;
-  }
 }

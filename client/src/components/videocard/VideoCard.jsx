@@ -1,13 +1,18 @@
+/* eslint-disable react/require-default-props */
 import { NavLink, useOutletContext } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./VideoCard.css";
 import { LockIcon, PlayIcon } from "lucide-react";
 
-export default function VideoCard({ video }) {
+export default function VideoCard({ video, reload = false }) {
   const { currentUser } = useOutletContext();
 
   return (
-    <NavLink className="cardContainer" to={`/video/${video.id}`}>
+    <NavLink
+      className="cardContainer"
+      to={`/video/${video.id}`}
+      reloadDocument={reload}
+    >
       <div className="overlay">
         <h2 className="cardTitle">{video.title}</h2>
       </div>
@@ -46,10 +51,11 @@ export default function VideoCard({ video }) {
 }
 
 VideoCard.propTypes = {
-  video: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  video: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    is_connected: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+  reload: PropTypes.bool,
 };

@@ -12,10 +12,10 @@ export default function SearchBar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.length > 2) {
-      navigate(`/result/${inputValue}`);
+      navigate(`/result/${encodeURIComponent(inputValue)}`);
     }
-    if (inputValue.length < 2) {
-      toast.error("Please enter at least 2 characters");
+    if (!inputValue || inputValue.length <= 2) {
+      toast.error("Please enter at least 3 characters");
     }
   };
 
