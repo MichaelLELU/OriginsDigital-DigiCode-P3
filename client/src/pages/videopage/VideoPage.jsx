@@ -163,7 +163,7 @@ export default function VideoPage() {
                       (!isHovered ? (
                         <HeartIcon fill="#880808" color="#880808" />
                       ) : (
-                        <HeartOffIcon color="#FFDF00" fill="#880808" />
+                        <HeartOffIcon color="#D9D9D9" fill="#880808" />
                       ))}
                   </button>
                 )}
