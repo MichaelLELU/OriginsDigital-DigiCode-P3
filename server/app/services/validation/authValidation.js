@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
 const authSchema = Joi.object({
-  email: Joi.string().regex(
-    /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/
-  ),
+  email: Joi.string()
+    .max(120)
+    .regex(/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/),
   password: Joi.string().regex(
     /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){12,64}$/
   ),
