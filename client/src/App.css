@@ -63,7 +63,7 @@ button[type="submit"] {
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--error {
-  background-color: var(--red);
+  background-color: var(--red) !important;
 }
 
 /** Erreurs de formulaires (React Hook Form) */
