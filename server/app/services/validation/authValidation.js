@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const xss = require("xss");
 
 const authSchema = Joi.object({
   email: Joi.string().regex(
@@ -11,8 +10,6 @@ const authSchema = Joi.object({
 });
 
 const validateAuth = (req, res, next) => {
-  req.body.email = xss(req.body.email);
-
   const { email, password } = req.body;
 
   try {
