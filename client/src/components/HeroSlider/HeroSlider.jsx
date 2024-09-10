@@ -85,12 +85,12 @@ export default function HeroSlider({ numberOfSlides = null, admin = false }) {
                 fill="#1FD360"
                 onClick={() => {
                   axios
-                    .delete(`${express}/api/heroslider/${v.id}`)
+                    .delete(`${express}/api/heroslider/${v.id}`, {
+                      withCredentials: true,
+                    })
                     .then((response) => {
                       if (response.status === 204) {
-                        toast.success(
-                          "Video successfully removed from the heroslider"
-                        );
+                        toast.success("Video successfully removed");
                         videoData.splice(videoData.indexOf(v), 1);
                         setVideoData([...videoData]);
                       }
