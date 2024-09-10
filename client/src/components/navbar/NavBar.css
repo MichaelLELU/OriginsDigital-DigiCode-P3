@@ -9,24 +9,10 @@
   max-height: var(--navbar-size);
   padding: calc(var(--nav-vertical-padding) / 2) var(--nav-horizontal-padding);
 
-  svg {
-    position: relative;
-    top: 0.1875rem;
-  }
-}
-
-div.logoContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 2em;
-
-  .logo {
-    max-height: 6rem;
-
-    @media screen and (width >= 800px) {
-      margin-top: 0;
-      max-height: 8rem;
-    }
+  a {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
   }
 }
 
@@ -54,7 +40,7 @@ div.logoContainer {
 
   .burger-menu span {
     display: block;
-    background-color: var(--main-color-gray);
+    background-color: var(--secondary-color);
     position: relative;
     top: 0;
     width: 2.5rem;
@@ -83,8 +69,8 @@ div.logoContainer {
   position: absolute;
   top: calc(var(--nav-menu-size) + var(--nav-vertical-padding) + 0.5rem);
   left: var(--nav-horizontal-padding);
-  background-color: var(--main-color-black);
-  color: var(--main-color-gray);
+  background-color: var(--main-color);
+  color: var(--secondary-color);
   border-radius: var(--medium-border-radius);
   padding: 1em;
   line-height: 2em;
@@ -113,7 +99,7 @@ div.logoContainer {
   font-size: 1em;
   border: none;
   background-color: transparent;
-  color: var(--main-color-gray);
+  color: var(--secondary-color);
   padding: 0;
 }
 

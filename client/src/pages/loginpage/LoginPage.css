@@ -4,32 +4,35 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  background-color: var(--main-color-gray);
+  background-color: var(--secondary-color);
   color: black;
-  height: 28rem;
   width: 20rem;
   border-radius: var(--input-radius);
+  padding: 2rem 0;
 
   @media screen and (width > 800px) {
     width: 25rem;
   }
+
+  label > span {
+    white-space: pre-wrap;
+  }
 }
 
 .login-title {
-  padding-top: 2rem;
+  margin-top: 0;
 }
 
 .login-text {
   margin: 0;
+
+  a {
+    filter: saturate(80%) invert(100%);
+  }
 }
 
 .container-text {
   margin-bottom: 2rem;
-}
-
-#button-here {
-  color: var(--accent-color);
-  text-decoration: underline;
 }
 
 .email-login,
@@ -44,14 +47,6 @@
     border-radius: var(--input-radius);
     border: none;
   }
-}
-
-.form-error-login {
-  margin: 0;
-  color: var(--red);
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
-  max-width: 14rem;
 }
 
 .login-button {

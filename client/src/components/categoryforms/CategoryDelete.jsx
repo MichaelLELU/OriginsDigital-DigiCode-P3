@@ -54,7 +54,12 @@ export default function CategoryDelete() {
     <section>
       <div className="header-panel">
         <h3> Delete a category </h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {categoryDeleteShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
@@ -76,9 +81,7 @@ export default function CategoryDelete() {
                   {`${cat.name.charAt(0).toUpperCase()}${cat.name.slice(1)}`}
                 </option>
               ))}
-              {errors.id && (
-                <p className="form-error-login">{errors.id.message}</p>
-              )}
+              {errors.id && <p className="form-error">{errors.id.message}</p>}
             </select>
           </div>
 

@@ -37,7 +37,12 @@ export default function CategoryAdd() {
     <section>
       <div className="header-panel">
         <h3> Add a category </h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {categoryAddShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
@@ -60,9 +65,7 @@ export default function CategoryAdd() {
                 },
               })}
             />
-            {errors.name && (
-              <p className="form-error-login">{errors.name.message}</p>
-            )}
+            {errors.name && <p className="form-error">{errors.name.message}</p>}
           </div>
 
           <button type="submit" className="button-form-panel">

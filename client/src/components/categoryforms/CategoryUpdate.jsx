@@ -48,7 +48,12 @@ export default function CategoryUpdate() {
     <section>
       <div className="header-panel">
         <h3>Rename a category</h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {categoryUpdateShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
@@ -71,9 +76,7 @@ export default function CategoryUpdate() {
                   value={cat.id}
                 >{`${cat.name.charAt(0).toUpperCase()}${cat.name.slice(1)}`}</option>
               ))}
-              {errors.id && (
-                <p className="form-error-login">{errors.id.message}</p>
-              )}
+              {errors.id && <p className="form-error">{errors.id.message}</p>}
             </select>
           </div>
           <div className="input-form-video">
@@ -90,9 +93,7 @@ export default function CategoryUpdate() {
                 },
               })}
             />
-            {errors.name && (
-              <p className="form-error-login">{errors.name.message}</p>
-            )}
+            {errors.name && <p className="form-error">{errors.name.message}</p>}
           </div>
           <button type="submit" className="button-form-panel">
             {" "}

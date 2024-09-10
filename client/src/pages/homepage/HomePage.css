@@ -14,3 +14,15 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (width < 800px) {
+  h2 > svg {
+    scale: 0.8;
+  }
+
+  h2:has(svg) {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}

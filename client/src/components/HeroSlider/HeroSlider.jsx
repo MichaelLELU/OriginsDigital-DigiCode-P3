@@ -75,7 +75,7 @@ export default function HeroSlider({ numberOfSlides = null, admin = false }) {
       {videoData.map((v) => (
         <SwiperSlide key={v.title} id="heroSlide">
           <NavLink to={`/video/${v.id}`}>
-            <img id="imageHero" src={v.image} alt={v.title} />
+            <img loading="lazy" id="imageHero" src={v.image} alt={v.title} />
           </NavLink>
           {admin && (
             <button type="button" aria-label="Remove from slider">
