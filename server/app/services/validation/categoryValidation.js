@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const xss = require("xss");
 
 const categorySchema = Joi.object({
   id: Joi.number(),
@@ -6,6 +7,8 @@ const categorySchema = Joi.object({
 });
 
 const validateCategory = (req, res, next) => {
+  req.body.name = xss(req.body.name);
+
   const { id, name } = req.body;
 
   try {
