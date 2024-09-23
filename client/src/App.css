@@ -24,7 +24,7 @@ body {
 }
 
 main {
-  max-width: clamp(320px, 90%, 1800px);
+  max-width: clamp(320px, 90%, 1600px);
   margin: auto;
 }
 
