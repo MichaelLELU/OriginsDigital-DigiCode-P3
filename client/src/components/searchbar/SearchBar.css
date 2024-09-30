@@ -13,11 +13,11 @@
     width: 40rem;
     height: 2.5rem;
   }
-}
 
-#search:focus {
-  outline: none;
-  border: 2px solid var(--accent-color);
+  &:focus {
+    outline: none;
+    border: 2px solid var(--accent-color);
+  }
 }
 
 .searchButton {
