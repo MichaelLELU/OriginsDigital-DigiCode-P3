@@ -15,21 +15,6 @@
   }
 }
 
-div.logoContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 2em;
-
-  .logo {
-    max-height: 6rem;
-
-    @media screen and (width >= 800px) {
-      margin-top: 0;
-      max-height: 8rem;
-    }
-  }
-}
-
 .menu-button {
   display: flex;
   align-items: center;

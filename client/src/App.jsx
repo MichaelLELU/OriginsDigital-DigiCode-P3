@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import NavBar from "./components/navbar/NavBar";
@@ -7,6 +7,7 @@ import fetchAuth from "./utils/auth";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "./assets/images/origins-digital.svg";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -31,6 +32,9 @@ function App() {
       <div className="app-container">
         <NavBar user={currentUser} setUser={setCurrentUser} />
         <main>
+          <Link to="/" className="logoContainer">
+            <img src={logo} alt="home" />
+          </Link>
           <Outlet context={{ currentUser, setCurrentUser }} />
         </main>
         <Footer />
