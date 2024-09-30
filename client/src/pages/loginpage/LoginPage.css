@@ -13,6 +13,10 @@
   @media screen and (width > 800px) {
     width: 25rem;
   }
+
+  label > span {
+    white-space: pre-wrap;
+  }
 }
 
 .login-title {
@@ -21,15 +25,14 @@
 
 .login-text {
   margin: 0;
+
+  a {
+    filter: saturate(50%) invert(100%);
+  }
 }
 
 .container-text {
   margin-bottom: 2rem;
-}
-
-#button-here {
-  color: var(--accent-color);
-  text-decoration: underline;
 }
 
 .email-login,

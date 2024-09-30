@@ -15,7 +15,6 @@ import {
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 import userLogout from "../../utils/logout";
-import logo from "../../assets/images/origins-digital.svg";
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
@@ -34,91 +33,84 @@ export default function NavBar({ user, setUser }) {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <>
-      <nav className="navbar-container">
-        {isMobile ? (
-          <button
-            className="menu-button"
-            type="button"
-            popovertarget="navlinks"
-            popovertargetaction="toggle"
-            onClick={toggleMenu}
-          >
-            <div
-              aria-label="menu"
-              className={`burger-menu ${isMenuOpen ? "open" : ""}`}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </button>
-        ) : null}
-
-        <div
-          {...(isMobile
-            ? { id: "navlinks", popover: "manual" }
-            : { id: "navlinks-desktop" })}
+    <nav className="navbar-container">
+      {isMobile ? (
+        <button
+          className="menu-button"
+          type="button"
+          popovertarget="navlinks"
+          popovertargetaction="toggle"
+          onClick={toggleMenu}
         >
-          <ul>
+          <div
+            aria-label="menu"
+            className={`burger-menu ${isMenuOpen ? "open" : ""}`}
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </button>
+      ) : null}
+
+      <div
+        {...(isMobile
+          ? { id: "navlinks", popover: "manual" }
+          : { id: "navlinks-desktop" })}
+      >
+        <ul>
+          <li>
+            <Link to="/">
+              <HouseIcon />
+              {" HOME"}
+            </Link>
+          </li>
+          <li>
+            <Link to="/categories">
+              <LibraryIcon />
+              {" Categories"}
+            </Link>
+          </li>
+          {user && user.role === "admin" && (
             <li>
-              <Link to="/">
-                <HouseIcon />
-                {" HOME"}
+              <Link to="/history9">
+                <UserRoundCogIcon /> Admin
               </Link>
             </li>
+          )}
+          {user && user.role === "user" && (
             <li>
-              <Link to="/categories">
-                <LibraryIcon />
-                {" Categories"}
+              <Link to="/user">
+                <UserRoundCheckIcon /> Profile
               </Link>
             </li>
-            {user && user.role === "admin" && (
+          )}
+          {user === null ? (
+            <>
               <li>
-                <Link to="/history9">
-                  <UserRoundCogIcon /> Admin
+                <Link to="login">
+                  <LogInIcon />
+                  {" Login"}
                 </Link>
               </li>
-            )}
-            {user && user.role === "user" && (
               <li>
-                <Link to="/user">
-                  <UserRoundCheckIcon /> Profile
+                <Link to="signup">
+                  <UserRoundPlusIcon />
+                  {" Signup"}
                 </Link>
               </li>
-            )}
-            {user === null ? (
-              <>
-                <li>
-                  <Link to="login">
-                    <LogInIcon />
-                    {" Login"}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="signup">
-                    <UserRoundPlusIcon />
-                    {" Signup"}
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <li>
-                <button type="button" onClick={handleLogout} className="logout">
-                  <LogOutIcon />
-                  {" Logout"}
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      </nav>
-      <div className="logoContainer">
-        <Link to="/">
-          <img className="logo" src={logo} alt="logo" />
-        </Link>
+            </>
+          ) : (
+            <li>
+              <button type="button" onClick={handleLogout} className="logout">
+                <LogOutIcon />
+                {" Logout"}
+              </button>
+            </li>
+          )}
+        </ul>
       </div>
-    </>
+    </nav>
   );
 }
 

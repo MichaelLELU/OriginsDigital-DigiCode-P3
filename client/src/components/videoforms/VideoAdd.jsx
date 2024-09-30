@@ -51,7 +51,12 @@ export default function VideoAdd() {
     <section>
       <div className="header-panel">
         <h3> Add a video </h3>
-        <button type="button" onClick={togglePanel} className="show-button">
+        <button
+          type="button"
+          onClick={togglePanel}
+          className="show-button"
+          aria-label="collapse panel"
+        >
           {videoAddShow ? (
             <CircleChevronDown strokeWidth={2} />
           ) : (
