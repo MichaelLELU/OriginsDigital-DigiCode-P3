@@ -10,7 +10,7 @@ const adminWall = async (req, res, next) => {
 
     const decodedToken = await decodeJWT(token);
 
-    if (decodedToken.role !== ("user" || "admin")) {
+    if (decodedToken.role !== "user") {
       return res.status(403).json({ message: "Forbidden" });
     }
 
