@@ -32,11 +32,9 @@ function App() {
       <div className="app-container">
         <NavBar user={currentUser} setUser={setCurrentUser} />
         <main>
-          <h1 className="logoContainer">
-            <Link to="/">
-              <img src={logo} alt="home" />
-            </Link>
-          </h1>
+          <Link to="/" className="logoContainer">
+            <img src={logo} alt="home" />
+          </Link>
           <Outlet context={{ currentUser, setCurrentUser }} />
         </main>
         <Footer />
