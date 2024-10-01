@@ -19,7 +19,12 @@ export default function VideoCard({ video, reload = false }) {
       <div className="cardImageContainer">
         {video.is_connected === 0 || currentUser != null ? (
           <>
-            <img className="cardImage" src={video.image} alt={video.title} />
+            <img
+              loading="lazy"
+              className="cardImage"
+              src={video.image}
+              alt={video.title}
+            />
             <PlayIcon
               className="poster-icon"
               stroke="#d9d9d9"
@@ -34,6 +39,7 @@ export default function VideoCard({ video, reload = false }) {
         ) : (
           <>
             <img
+              loading="lazy"
               className="imageNotConnected"
               src={video.image}
               alt={video.title}

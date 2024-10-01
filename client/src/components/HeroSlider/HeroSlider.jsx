@@ -75,7 +75,7 @@ export default function HeroSlider({ numberOfSlides = null, admin = false }) {
       {videoData.map((v) => (
         <SwiperSlide key={v.title} id="heroSlide">
           <NavLink to={`/video/${v.id}`}>
-            <img id="imageHero" src={v.image} alt={v.title} />
+            <img loading="lazy" id="imageHero" src={v.image} alt={v.title} />
           </NavLink>
           {admin && (
             <button type="button" aria-label="Remove from slider">
@@ -85,12 +85,12 @@ export default function HeroSlider({ numberOfSlides = null, admin = false }) {
                 fill="#1FD360"
                 onClick={() => {
                   axios
-                    .delete(`${express}/api/heroslider/${v.id}`)
+                    .delete(`${express}/api/heroslider/${v.id}`, {
+                      withCredentials: true,
+                    })
                     .then((response) => {
                       if (response.status === 204) {
-                        toast.success(
-                          "Video successfully removed from the heroslider"
-                        );
+                        toast.success("Video successfully removed");
                         videoData.splice(videoData.indexOf(v), 1);
                         setVideoData([...videoData]);
                       }

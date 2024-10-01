@@ -13,7 +13,7 @@ export default function RgpdPage() {
       <section>
         <h2> Origins Digital Privacy Policy. </h2>
         <h3>
-          in accordance with article 6 of law n° 2004-575 du 21 juin 2004{" "}
+          In accordance with article 6 of law n° 2004-575 du 21 juin 2004{" "}
           <Scale color="#1FD360" strokeWidth={1.75} />
         </h3>
         <p>

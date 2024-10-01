@@ -161,9 +161,9 @@ export default function VideoPage() {
                     {!isFavorite && <HeartIcon color="#1FD360" />}
                     {isFavorite &&
                       (!isHovered ? (
-                        <HeartIcon fill="#880808" color="#880808" />
+                        <HeartIcon fill="#880808" color="#D9D9D9" />
                       ) : (
-                        <HeartOffIcon color="#FFDF00" fill="#880808" />
+                        <HeartOffIcon color="#D9D9D9" fill="#880808" />
                       ))}
                   </button>
                 )}
@@ -181,7 +181,7 @@ export default function VideoPage() {
                       (!isHovered ? (
                         <BookmarkIcon fill="#1FD360" color="#1FD360" />
                       ) : (
-                        <BookmarkXIcon fill="#880808" color="#FFDF00" />
+                        <BookmarkXIcon fill="#880808" color="#D9D9D9" />
                       ))}
                   </button>
                 )}
