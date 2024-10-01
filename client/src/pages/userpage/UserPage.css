@@ -1,6 +1,6 @@
 .user-page-container {
-  background-color: var(--main-color-gray);
-  color: var(--main-color-black);
+  background-color: var(--secondary-color);
+  color: var(--main-color);
   border-radius: var(--input-radius);
   padding: 0.1rem 1rem;
   margin-bottom: 3rem;

@@ -33,7 +33,7 @@ function App() {
         <NavBar user={currentUser} setUser={setCurrentUser} />
         <main>
           <Link to="/" className="logoContainer">
-            <img src={logo} alt="home" />
+            <img loading="lazy" src={logo} alt="home" />
           </Link>
           <Outlet context={{ currentUser, setCurrentUser }} />
         </main>

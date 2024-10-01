@@ -87,7 +87,7 @@ export default function LoginPage() {
             />
           </label>
           {errors.email && (
-            <p className="form-error-login"> {errors.email.message}</p>
+            <p className="form-error"> {errors.email.message}</p>
           )}
         </div>
 
@@ -116,12 +116,12 @@ export default function LoginPage() {
             />
           </label>
           {errors.password && (
-            <p className="form-error-login">{errors.password.message}</p>
+            <p className="form-error">{errors.password.message}</p>
           )}
         </div>
 
         {responseStatus === 404 && (
-          <p className="form-error-login" style={{ marginBottom: "1rem" }}>
+          <p className="form-error" style={{ marginBottom: "1rem" }}>
             Email and password do not match
           </p>
         )}
