@@ -44,7 +44,7 @@ export default function UserPage() {
 
       <section className="user-favorites">
         <h2>
-          Your favorite videos <HeartIcon color="red" fill="red" />
+          Your favorite videos <HeartIcon color="#D9D9D9" fill="#880808" />
         </h2>
         {videoData?.length > 0 ? (
           <VideoList videoData={videoData} />
