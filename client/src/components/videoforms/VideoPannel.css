@@ -1,21 +1,21 @@
 .form-video-pannel {
   display: flex;
   flex-direction: column;
-}
 
-.form-video-pannel label {
-  margin-right: 1rem;
-}
+  label {
+    margin-right: 1rem;
+  }
 
-.form-video-pannel input {
-  border: none;
-  border-radius: var(--input-radius);
-  height: 1.5rem;
-}
+  input {
+    border: none;
+    border-radius: var(--input-radius);
+    height: 1.5rem;
 
-.form-video-pannel input:focus {
-  outline: none;
-  border: var(--accent-color) 2px solid;
+    &:focus {
+      outline: none;
+      border: var(--accent-color) 2px solid;
+    }
+  }
 }
 
 .header-panel {

@@ -35,12 +35,12 @@
   @media screen and (width > 800px) {
     padding: 1rem 2rem;
   }
-}
 
-.signup-form > label {
-  align-self: baseline;
-  position: relative;
-  left: 1rem;
+  & > label {
+    align-self: baseline;
+    position: relative;
+    left: 1rem;
+  }
 }
 
 .signup-subtitle {

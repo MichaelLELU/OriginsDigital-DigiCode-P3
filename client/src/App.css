@@ -89,9 +89,14 @@ button[type="submit"] {
 a {
   text-decoration: none;
   color: var(--accent-color);
-}
-a:hover {
-  text-decoration: underline dotted;
+
+  &:hover {
+    text-decoration: underline dotted;
+  }
+
+  &:has(> .backButton) {
+    text-decoration: none;
+  }
 }
 
 /** Style commun aux boutons de navigation */
@@ -107,10 +112,6 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-}
-
-a:has(> .backButton) {
-  text-decoration: none;
 }
 
 /** Style pour les boutons de navigation de Swiper */

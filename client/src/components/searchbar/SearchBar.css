@@ -15,11 +15,11 @@
   @media screen and (width >= 800px) {
     width: 40rem;
   }
-}
 
-#search:focus {
-  outline: none;
-  border: 2px solid var(--accent-color);
+  &:focus {
+    outline: none;
+    border: 2px solid var(--accent-color);
+  }
 }
 
 .searchButton {

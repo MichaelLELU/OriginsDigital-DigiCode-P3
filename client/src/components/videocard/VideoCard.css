@@ -4,9 +4,13 @@
   align-items: start;
 }
 
-.cardImage:hover {
-  @media screen and (width >= 800px) {
-    opacity: 0.6;
+.cardImage {
+  width: 18.75rem;
+
+  &:hover {
+    @media screen and (width >= 800px) {
+      opacity: 0.6;
+    }
   }
 }
 
