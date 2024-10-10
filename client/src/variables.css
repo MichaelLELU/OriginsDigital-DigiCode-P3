@@ -1,13 +1,9 @@
 :root {
   /* colors */
-  --main-color-black: #2b2929;
-  --main-color-gray: #d9d9d9;
+  --main-color: #2b2929;
+  --secondary-color: #d9d9d9;
   --accent-color: #1fd360;
   --red: #880808;
-
-  /* border radius */
-  --input-radius: 5px;
-  --medium-border-radius: 6px;
 
   /* navbar */
   --nav-horizontal-padding: 2rem;
@@ -16,5 +12,9 @@
   --navbar-size: 4rem;
 
   /* footer */
-  --footer-height: 10rem;
+  --footer-height: 6rem;
+
+  /* border radius */
+  --input-radius: 5px;
+  --medium-border-radius: 6px;
 }

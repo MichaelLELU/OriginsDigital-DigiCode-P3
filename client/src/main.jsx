@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path: "/categories/:name",
         element: <CategoryPage />,
-        loader: async ({ params }) => {
+        loader: ({ params }) => {
           const fetchCategory = async () => {
             try {
               const specificCategory = await axios

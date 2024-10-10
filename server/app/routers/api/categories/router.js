@@ -11,6 +11,7 @@ const {
 } = require("../../../controllers/categoryActions");
 
 const adminWall = require("../../../services/adminWall");
+const categoryValidation = require("../../../services/validation/categoryValidation");
 
 router.get("/", browse);
 
@@ -19,10 +20,10 @@ router.get("/:name", read);
 // secure routes with adminWall
 router.use(adminWall);
 
-router.put("/:id", edit);
+router.put("/:id", categoryValidation, edit);
 
-router.post("/", add);
+router.post("/", categoryValidation, add);
 
-router.delete("/:id", destroy);
+router.delete("/:id", categoryValidation, destroy);
 
 module.exports = router;

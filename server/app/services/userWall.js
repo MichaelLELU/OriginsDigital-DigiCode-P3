@@ -13,7 +13,7 @@ const adminWall = async (req, res, next) => {
     if (decodedToken.role !== "user") {
       return res.status(403).json({ message: "Forbidden" });
     }
-    req.user = decodedToken;
+
     return next();
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });

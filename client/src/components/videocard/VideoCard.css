@@ -1,5 +1,4 @@
 .cardContainer {
-  width: 18.75rem;
   display: flex;
   flex-direction: column-reverse;
   align-items: start;
@@ -7,10 +6,11 @@
 
 .cardImage {
   width: 18.75rem;
-}
-.cardImage:hover {
-  @media screen and (width >= 800px) {
-    opacity: 0.6;
+
+  &:hover {
+    @media screen and (width >= 800px) {
+      opacity: 0.6;
+    }
   }
 }
 
@@ -33,6 +33,7 @@
   height: 30%;
   z-index: 2;
 }
+
 .poster-icon-outline {
   z-index: 1;
 }

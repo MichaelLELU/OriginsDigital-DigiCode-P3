@@ -9,7 +9,6 @@
   flex-direction: column;
 
   @media screen and (width >= 800px) {
-    display: flex;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -24,8 +23,8 @@
 .admin-panel-category {
   display: flex;
   flex-direction: column;
-  background-color: var(--main-color-gray);
-  color: var(--main-color-black);
+  background-color: var(--secondary-color);
+  color: var(--main-color);
   padding: 1rem;
   border-radius: var(--input-radius);
   margin-bottom: 1rem;
