@@ -8,8 +8,8 @@ CREATE TABLE category (
 CREATE TABLE video (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(80) NOT NULL,
-    url VARCHAR(255) NOT NULL,
-    image VARCHAR(255) NOT NULL,
+    url VARCHAR(4096) NOT NULL,
+    image VARCHAR(4096) NOT NULL,
     description TEXT,
     date DATETIME DEFAULT NOW(),
     is_connected BOOLEAN DEFAULT FALSE,
@@ -25,9 +25,9 @@ CREATE TABLE role (
 
 CREATE TABLE user (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    firstname VARCHAR(120) NOT NULL,
-    lastname VARCHAR(120) NOT NULL,
-    email VARCHAR(120) NOT NULL UNIQUE,
+    firstname VARCHAR(128) NOT NULL,
+    lastname VARCHAR(128) NOT NULL,
+    email VARCHAR(320) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role_id INT UNSIGNED DEFAULT 1,
     FOREIGN KEY (role_id) REFERENCES role (id)
@@ -48,6 +48,7 @@ CREATE TABLE heroslider (
     FOREIGN KEY (video_id) REFERENCES video (id) ON DELETE CASCADE
 );
 
+--*** Insertion de données ****
 -- Création de roles
 INSERT INTO role (name) VALUES ('user'), ('admin');
 
